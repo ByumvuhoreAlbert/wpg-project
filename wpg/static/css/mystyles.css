@@ -1,0 +1,89 @@
+body, .container-fluid {
+    font-family: Arial, sans-serif;
+    background-image: url('static/img/navbck.png');
+    z-index: 1000;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.navbar {
+    background-color: transparent !important;;
+}
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.navbar-nav .nav-link {
+    color: #333 !important;
+}
+.navbar-nav .nav-item:first-child .nav-link {
+    background-color: #f8c291;
+    border-radius: 20px;
+    padding: 8px 20px;
+}
+.hero {
+    height: 100vh;
+    overflow: hidden;
+}
+.carousel-item {
+    height: 100vh;
+}
+.carousel-item img {
+    object-fit: fill;
+    height: 100%;
+    width: 100%;
+}
+.carousel-caption {
+    bottom: 50%;
+    transform: translateY(50%);
+    text-align: left;
+}
+.carousel-caption h4 {
+    font-size: 2rem;
+    font-weight: bold;
+    color:#056C7F;
+}
+.carousel-caption p {
+    font-size: 18px;
+    color: #fcfbfb;
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.carousel-indicators {
+    bottom: 20px;
+    color: black;
+}
+.carousel-indicators [data-bs-target] {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #0e0d0d;
+    
+}
+
+span{
+    color: #f8c291;
+}
+
+.language-selector {
+    margin-left: 15px;
+}
+.language-selector .btn {
+    background-color: transparent;
+    border: none;
+    color: #333;
+}
+.language-selector .dropdown-menu {
+    min-width: 100px;
+}
+
+.h5{
+    color: #58aaf1;
+    font-size: 1.3rem;
+}
+
+footer.fixed-bottom {
+    width: 100%;
+    left: 0;
+    bottom: 0;
+  }  
