@@ -16,10 +16,10 @@
 	color:rgba(255,255,255,.5);
 }
 .navbar.navbar-bg-onscroll a.nav-link:hover{
-	/* color:#fff; */
+	color:#fff; 
 }
-.navbar.navbar-bg-onscroll a.nav-link.active{
-	/* color:#fff; */
+.navbar, .navbar-bg-onscroll, a.nav-link.active{
+	color:#fff; 
 }
 .navbar-bg-onscroll{
 	background: #ffffff !important;

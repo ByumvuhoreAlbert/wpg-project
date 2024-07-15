@@ -35,10 +35,10 @@ h1, h2{
 	color:#e68b0de8 !important
 }
 .bg-dark{
-	 /* background-color: #f1ad50 !important; */
+	background-color: #f1ad50 !important; 
 }
 header{
-  /* padding: 70px 0 100px; */
+  padding: 70px 0 100px; 
 } 
 .navbar .navbar-nav .nav-item .nav-link {
     color: #080808;
