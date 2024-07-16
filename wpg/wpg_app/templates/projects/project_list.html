@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portfolio</title>
+</head>
+<body>
+    <h1><i>Project</i></h1>
+    <table class='table table-bordered'>
+        <thead> 
+        {% for item in items %}
+        <tr>
+            <a href="{% url 'project_detail' item.pk %}">
+                <img src="{{ item.image.url }}" alt="{{ item.title }}" width="200">
+                <p>{{ item.title }}</p>
+            </a>
+        <tr>
+        {% endfor %}
+    </div>
+</table>
+</body>
+</html>

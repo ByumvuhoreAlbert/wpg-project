@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ item.title }}</title>
+</head>
+<body>
+    <h1>{{ item.title }}</h1>
+    <img src="{{ item.image.url }}" alt="{{ item.title }}" width="400">
+    <p>{{ item.description }}</p>
+    <a href="{% url 'project_list' %}">Back to Portfolio</a>
+</body>
+</html>
