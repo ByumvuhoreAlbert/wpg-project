@@ -1,10 +1,17 @@
 from . import views
 from django.contrib import admin
 from django.urls import path
+from .views import index, testimonial_view
+
 
 urlpatterns = [
 path('', views.index, name='index'),
 path('project_list',views.project_list, name='project_list'),
+
+path('item/<int:pk>/',views.project_detail, name='project_detail'),
+path('testimonial_view/', testimonial_view, name='testimonial_view'),
+path('testimonials/', testimonial_view, name='testimonial_view'),
+
 path('projectlist1',views.projectlist1, name='projectlist1'),
 path('projectlist2',views.projectlist2, name='projectlist2'),
 path(' project_table',views. project_table, name=' project_table'),
@@ -27,3 +34,4 @@ path('projects/<int:project_id>/',views.project_detail, name='project_detail'),
 
 # if settings.DEBUG:
 #     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
