@@ -269,7 +269,7 @@
 					<img class="img-fluid img-responsive" src="{% static '/img/portfolio/img1.jpg' %}" alt="">
 						<div class="overlay"> 
 							<p>
-								<a href="{% url 'project_list' %}" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
+								<a href="" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
                   view details</a>
               </a>
             </p>
@@ -283,7 +283,7 @@
 					<img class="img-fluid img-responsive" src="{% static '/img/portfolio/img2.jpg' %}/" alt="">
 						<div class="overlay"> 
 							<p>
-								<a href="{% url 'projectlist1' %}" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
+								<a href="" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
                   view details</a>
               </a>
             </p>
@@ -296,7 +296,7 @@
 					<img class="img-fluid img-responsive" src="{% static '/img/portfolio/img3.jpg' %}" alt="" style="text-decoration:none">
 						<div class="overlay"> 
               <p>
-								<a href="{% url 'projectlist2' %}" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
+								<a href="" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
                   view details</a>
               </a>
             </p>
@@ -309,7 +309,7 @@
 					<img class="img-fluid img-responsive" src="{% static '/img/portfolio/img4.jpg' %}" alt="">
 						<div class="overlay"> 
               <p>
-								<a href="{% url 'projectlist3' %}" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
+								<a href="" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
                   view details</a>
               </a>
             </p>
@@ -322,7 +322,7 @@
 					<img class="img-fluid img-responsive" src="{% static '/img/portfolio/img5.jpg' %}" alt="">
 						<div class="overlay"> 
               <p>
-								<a href="{% url 'projectlist4' %}" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
+								<a href="" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
                   view details</a>
               </a>
             </p>
@@ -335,7 +335,7 @@
 					<img class="img-fluid img-responsive" src="{% static '/img/portfolio/img6.jpg' %}" alt="">
 						<div class="overlay"> 
               <p>
-								<a href="{% url 'projectlist5' %}" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
+								<a href="" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
                   view details</a>
               </a>
             </p>
@@ -585,21 +585,21 @@
 		</div>
 		 
           <div class="row">
-            {% for testimonial in testimonials %}
+            
         
             <div class="col-lg-6 mb-7 mb-lg-0 px-lg-5" data-aos="fade-right" data-aos-easing="linear" data-aos-delay="200">
               <!-- Testimonial -->
-              <blockquote class="wt-blockquote-v2 rounded mb-5">{{ testimonial.message }}</blockquote>
+              <blockquote class="wt-blockquote-v2 rounded mb-5">message</blockquote>
               <div class="media wt-font-size-90">
                 <img class="d-flex align-self-center rounded-circle wt-blockquote-v2__image wt-box-shadow-lg mx-3 mt-2" src="{% static  '/img/ava/img3.jpg' %}" alt="Image description">
                 <div class="media-body align-self-center">
-                  <strong class="d-block">{{ testimonial.fullname }}</strong>
-                  <span class="wt-font-size-75 text-dark">{{ testimonial.created_at }}</span>
+                  <strong class="d-block">fullname</strong>
+                  <span class="wt-font-size-75 text-dark"></span>
                 </div>
               </div>
               <!-- End Testimonial -->
             </div>
-            {% endfor %}
+            <!-- end -->
           </div>
       </section>	  
 <section class="wt-section bg-light" id="contact">
@@ -615,7 +615,7 @@
                      <div class="form"> 
 		  
 		   <!-- Form itself -->
-       <form name="sentMessage" class="well" id="contactForm" method="POST" action="{% url 'testimonial_view' %}" novalidate data-aos="fade-up" data-aos-easing="linear" data-aos-delay="200">
+       <form name="sentMessage" class="well" id="contactForm" method="POST"  novalidate data-aos="fade-up" data-aos-easing="linear" data-aos-delay="200">
         {% csrf_token %}
         <div class="control-group">
             <div class="form-group mb-4">
