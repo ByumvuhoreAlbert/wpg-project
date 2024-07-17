@@ -1,6 +1,6 @@
 # views.py
 from django.shortcuts import render, get_object_or_404
-from .models import Project, project_table
+#from .models import Project, project_table
 def index(request):
     return render(request, 'index.html')
 def project_list(request):
