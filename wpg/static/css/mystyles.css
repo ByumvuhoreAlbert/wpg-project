@@ -1,10 +1,19 @@
-body, .container-fluid {
+* {
+    box-sizing: border-box;
+}
+
+body{
     font-family: Arial, sans-serif;
     background-image: url('static/img/navbck.png');
     z-index: 1000;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    overflow-x: hidden;
+}
+.container {
+    padding: 0 15px; 
+    width: 1000px;
 }
 .navbar {
     background-color: transparent !important;;
