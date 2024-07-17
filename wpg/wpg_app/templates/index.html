@@ -32,7 +32,7 @@
                     <a class="nav-link" href="#about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#portfolio">Portfolio</a>
+                    <a class="nav-link" href="#portfolio">Prejects</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#team">Team</a>
@@ -244,12 +244,17 @@
   </div>
 </section>
 
+
+	  
+	   
+
+>>>>>>> 1f918486dfcc5d49e72718c4b7f68f6ddc53d27e
 <section class="wt-section" id="portfolio"> 
  <div class="container">
         <div class="row justify-content-md-center text-center pb-lg-5">
             <div class="col-md-12">
-                <h2 class="h1">Portfolio</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, </p>
+                <h2 class="h1">Projects</h2>
+                <p>The following are projects that had been completed<br> click on each one to view Details.</p>
             </div>
         </div>
          <div class="portfolio-menu mt-2 mb-4 pb-3">
@@ -264,39 +269,37 @@
 					<img class="img-fluid img-responsive" src="{% static '/img/portfolio/img1.jpg' %}" alt="">
 						<div class="overlay"> 
 							<p>
-								<a href="{% static '/img/portfolio/img1.jpg' %}" class="fancylight info" data-fancybox-group="light">
+								<a href="{% url 'project_list' %}" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
+                  view details</a>
               </a>
             </p>
-            
 						</div>
             
 					</div>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              view
-            <i>Details</i></a>
-            </button> 
-			    
-            </div> 
+         </div> 
+         
 			    <div class="item selfie col-lg-3 col-md-4 col-6 col-sm"> 
 				<div class="hovereffect5 rounded-md overflow-hidden">
 					<img class="img-fluid img-responsive" src="{% static '/img/portfolio/img2.jpg' %}/" alt="">
 						<div class="overlay"> 
 							<p>
-								<a href="{% static '/img/portfolio/img2.jpg' %}" class="fancylight popup-btn info" data-fancybox-group="light">View
-								<i>Details</i></a>
-							</p>
+								<a href="{% url 'projectlist1' %}" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
+                  view details</a>
+              </a>
+            </p>
 						</div>
 					</div> 
 			    
             </div> 
 				    <div class="item lap col-lg-3 col-md-4 col-6 col-sm"> 
 				<div class="hovereffect5 rounded-md overflow-hidden">
-					<img class="img-fluid img-responsive" src="{% static '/img/portfolio/img3.jpg' %}" alt="">
+					<img class="img-fluid img-responsive" src="{% static '/img/portfolio/img3.jpg' %}" alt="" style="text-decoration:none">
 						<div class="overlay"> 
-							<p>
-								<a href="{% static '/img/portfolio/img3.jpg' %}" class="fancylight popup-btn info" data-fancybox-group="light">View
-								<i>Details</i></a>
-							</p>
+              <p>
+								<a href="{% url 'projectlist2' %}" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
+                  view details</a>
+              </a>
+            </p>
 						</div>
 					</div> 
 			    
@@ -305,10 +308,11 @@
 				<div class="hovereffect5 rounded-md overflow-hidden">
 					<img class="img-fluid img-responsive" src="{% static '/img/portfolio/img4.jpg' %}" alt="">
 						<div class="overlay"> 
-							<p>
-								<a href="{% static '/img/portfolio/img4.jpg' %}" class="fancylight popup-btn info" data-fancybox-group="light">View
-								<i>Details</i></a>
-							</p>
+              <p>
+								<a href="{% url 'projectlist3' %}" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
+                  view details</a>
+              </a>
+            </p>
 						</div>
 					</div> 
 			    
@@ -317,10 +321,11 @@
 				<div class="hovereffect5 rounded-md overflow-hidden">
 					<img class="img-fluid img-responsive" src="{% static '/img/portfolio/img5.jpg' %}" alt="">
 						<div class="overlay"> 
-							<p>
-								<a href="{% static '/img/portfolio/img5.jpg' %}" class="fancylight popup-btn info" data-fancybox-group="light">View
-								<i>Details</i></a>
-							</p>
+              <p>
+								<a href="{% url 'projectlist4' %}" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
+                  view details</a>
+              </a>
+            </p>
 						</div>
 					</div> 
 			    
@@ -329,10 +334,11 @@
 				<div class="hovereffect5 rounded-md overflow-hidden">
 					<img class="img-fluid img-responsive" src="{% static '/img/portfolio/img6.jpg' %}" alt="">
 						<div class="overlay"> 
-							<p>
-								<a href="{% static '/img/portfolio/img6.jpg' %}" class="fancylight popup-btn info" data-fancybox-group="light">View
-								<i>Details</i></a>
-							</p>
+              <p>
+								<a href="{% url 'projectlist5' %}" class="fancylight info" data-fancybox-group="light" style="text-decoration:none">
+                  view details</a>
+              </a>
+            </p>
 						</div>
 					</div> 
 			    
@@ -342,7 +348,7 @@
 					<img class="img-fluid img-responsive" src="{% static '/img/portfolio/img7.jpg' %}" alt="">
 						<div class="overlay"> 
 							<p>
-								<a href="{% static '/img/portfolio/img7.jpg' %}" class="fancylight popup-btn info" data-fancybox-group="light">View
+								<a href="{% static '/img/portfolio/img7.jpg' %}" class="fancylight popup-btn info" data-fancybox-group="light" style="text-decoration:none">View
 								<i>Details</i></a>
 							</p>
 						</div>
@@ -354,7 +360,7 @@
 					<img class="img-fluid img-responsive" src="{% static '/img/portfolio/img8.jpg' %}" alt="">
 						<div class="overlay"> 
 							<p>
-								<a href="{% static '/img/portfolio/img8.jpg' %}" class="fancylight popup-btn info" data-fancybox-group="light">View
+								<a href="{% static '/img/portfolio/img8.jpg' %}" class="fancylight popup-btn info" data-fancybox-group="light" style="text-decoration:none">View
 								<i>Details</i></a>
 							</p>
 						</div>
