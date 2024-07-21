@@ -1,5 +1,6 @@
+
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import ContactMessage, Order
+from .models import ContactMessage, Order, UploadImage
 from .forms import ContactForm, OrderForm
 
 def index(request):
@@ -67,3 +68,29 @@ def add_new(request):
 def add_event(request):
     return render(request, 'add_event.html')
     
+
+# views.py
+
+from django.shortcuts import render, redirect
+from .models import UploadImage
+from .forms import UploadImageForm
+
+
+def index(request):
+    images = UploadImage.objects.all()
+    return render(request, 'index.html', {'images': images})
+
+def Addproject(request):
+    if request.method == 'POST':
+        form = UploadImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = UploadImageForm()
+    return render(request, 'Addproject.html', {'form': form})
+
+
+
+
+

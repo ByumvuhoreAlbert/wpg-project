@@ -261,6 +261,7 @@
 </section>
 
 
+<<<<<<< HEAD
 <section class="wt-section" id="portfolio">
  <div class="container">
         <div class="row justify-content-md-center text-center pb-lg-5">
@@ -380,15 +381,73 @@
 
             </div>
          </div>
+=======
+	  
+
+<section class="wt-section" id="portfolio">
+  <div class="container">
+      <div class="row justify-content-md-center text-center pb-lg-5">
+          <div class="col-md-12">
+              <h2 class="h1">Projects</h2>
+              <p>The following are projects that have been completed.</p>
+          </div>
+>>>>>>> d954deeb70cc34c4887382c2e98f17a06bcc3b1c
       </div>
+      <div class="portfolio-menu mt-2 mb-4 pb-3">
+          {% comment %} 
+          <ul>
+              <li class="btn mr-2 btn-outline-dark active" data-filter="*">All</li>
+              <li class="btn mr-2 btn-outline-dark" data-filter=".furniture">Furniture</li>
+              <!-- Add more filter categories if needed -->
+          </ul> 
+          {% endcomment %}
+      </div>
+      <div class="portfolio-item row" data-aos="fade-up" data-aos-easing="linear" data-aos-delay="100">
+        {% for image in images %}
+            <div class="col-md-4">
+                <div class="image-container">
+                    <img src="{{ image.image.url }}" alt="Image" class="img-fluid">
+
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal" 
+                            data-name="{{ image.name }}" 
+                            data-description="{{ image.description }}" 
+                            data-image-url="{{ image.image.url }}">
+                        Click Here
+                    </button>
+                </div>
+            </div>
+        {% endfor %}
+      </div>
+  </div>
 </section>
 
+<<<<<<< HEAD
+=======
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="imageModalLabel">Image Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <h5 id="modalName"></h5>
+              <p id="modalDescription"></p>
+              <img id="modalImage" src="" alt="Image" class="img-fluid">
+          </div>
+      </div>
+  </div>
+</div>
+	
+>>>>>>> d954deeb70cc34c4887382c2e98f17a06bcc3b1c
 <section class="bg-light wt-section" id="team" style="margin-top:20px;">
         <div class="container">
 		<div class="row justify-content-md-center text-center mb-lg-5 mb-4 pb-lg-5">
             <div class="col-md-12">
                 <h2 class="h1">Our Team</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, </p>
+                <p>Here are our Team members </p>
             </div>
         </div>
           <div class="row">
@@ -537,8 +596,13 @@
     <div class="container-fluid">
         <div class="row justify-content-md-center text-center mb-lg-3 mb-1 pb-lg-1 m-1">
             <div class="col-md-16 col-dark">
+<<<<<<< HEAD
                 <h2 class="h1">Price</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, </p>
+=======
+              <h2 class="h1">Price</h2>
+              <p>The following are projects that can be done with their prices </p>
+>>>>>>> d954deeb70cc34c4887382c2e98f17a06bcc3b1c
             </div>
         </div>
 
@@ -562,6 +626,56 @@
                 </div>
             </div>
             {% endfor %}
+<<<<<<< HEAD
+=======
+          </div>
+      </section>	  
+<section class="wt-section bg-light" id="contact">
+    <div class="container">
+	<div class="row justify-content-md-center text-center pb-lg-4 mb-lg-5 mb-4">
+          <div class="col-md-8 text-center w-md-50 mx-auto mb-0 ">
+            <h2 class="mb-md-2">Let us know</h2>
+            <p>There are many variations of projects that can be done due to your ideas, let us know your suggestion!</p>
+          </div>
+		</div>
+		
+        <div class="row justify-content-md-center text-center mg-5 pb-5">
+                     <div class="form"> 
+		  
+		   <!-- Form itself -->
+       <form name="sentMessage" class="well" id="contactForm" method="POST" action="" novalidate data-aos="fade-up" data-aos-easing="linear" data-aos-delay="200">
+        
+        <div class="control-group">
+            <div class="form-group mb-4">
+                <input type="text" class="form-control form-control-lg" 
+                       placeholder="Full Name" name="fullname" required
+                       data-validation-required-message="Please enter your name" />
+                <p class="help-block"></p>
+            </div>
+        </div> 	
+        <div class="form-group mb-4">
+            <div class="controls">
+                <input type="email" class="form-control form-control-lg" placeholder="Email" 
+                       name="email" required
+                       data-validation-required-message="Please enter your email" />
+            </div>
+        </div> 	
+        <div class="form-group mb-4">
+            <div class="controls">
+                <textarea rows="5" cols="100" class="form-control form-control-lg" 
+                          placeholder="Message" name="message" required
+                          data-validation-required-message="Please enter your message" minlength="5" 
+                          data-validation-minlength-message="Min 5 characters" 
+                          maxlength="999" style="resize:none"></textarea>
+            </div>
+        </div> 		 
+        <div id="success"></div> <!-- For success/fail messages -->
+        <div class="text-center">
+            <button class="btn btn-lg btn-primary py-3 mt-3 px-4 btn-pill" type="submit">Send Your Message</button>
+        </div> 
+    </form>
+    
+>>>>>>> d954deeb70cc34c4887382c2e98f17a06bcc3b1c
         </div>
     </div>
 </section>
@@ -639,6 +753,7 @@
                       </form>
                     </div>
                 </div>
+<<<<<<< HEAD
 
                 <div class="col-md-5">
                     <div class="row contact-info">
@@ -673,6 +788,30 @@
         </div>
     </section>
 
+=======
+				
+				<div class="bg-white p-4 d-flex mb-md-4 border rounded-md" data-aos="fade-right" data-aos-easing="linear" data-aos-delay="300">
+                       <i class="fas fa-envelope-open mt-md-1 text-primary pr-4"></i>
+						<div class="text-left">
+							  <h3 class="h5">Email</h3>
+            <p class="mb-0">wisdompalacegroup@gmail.com</p>
+						</div>
+                </div>
+				
+				<div class="bg-white p-4 d-flex mb-md-4 border rounded-md" data-aos="fade-right" data-aos-easing="linear" data-aos-delay="400">
+                       <i class="fa fa-phone mt-md-1 text-primary pr-4"></i>   
+						<div class="text-left">
+							 <h3 class="h5">Phone Number</h3>
+            <p class="mb-0">250-788-000-000
+            </p>
+						</div>
+                </div>
+				 
+			</div> 
+     </div>
+ </div>
+ </div>
+>>>>>>> d954deeb70cc34c4887382c2e98f17a06bcc3b1c
 		 <div class="row" data-aos="fade-up" data-aos-easing="linear" data-aos-delay="100">
   <iframe src="https://www.google.com/maps/place/Karongi+District+Office/@-2.0525559,29.3943833,15z/data=!3m1!4b1!4m6!3m5!1s0x19dd2917394f3443:0x2156ff1e06866db1!8m2!3d-2.052556!4d29.4128374!16s%2Fg%2F11gsn1tg6w?entry=ttu" width="100%" height="320" frameborder="0" style="border:0" allowfullscreen></iframe>
  </div>
@@ -684,6 +823,7 @@
     </main>
 
     <!-- Footer -->
+<<<<<<< HEAD
     <footer class="bg-dark py-1 fixed-bottom">
       <div class="container">
         <div class="row">
@@ -726,6 +866,50 @@
   </div>
 
 
+=======
+    <div class="d-flex justify-content-center">
+      <footer class="bg-dark py-1 fixed-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 text-center text-md-left mb-3 mb-md-0">
+              <small class="text-white">
+                <a class="text-white" href="#">WPG| Wisdom Palace Group</a>
+                <br />&copy; 2024
+              </small>
+            </div>
+    
+            <div class="col-md-4 align-self-center">
+              <ul class="list-inline text-center text-md-right mb-0">
+                <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Facebook">
+                  <a class="text-white" target="_blank" href="#">
+                    <i class="fab fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Instagram">
+                  <a class="text-white" target="_blank" href="#">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Twitter">
+                  <a class="text-white" target="_blank" href="#">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                {% comment %} <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Dribbble">
+                  <a class="text-white" target="_blank" href="https://dribbble.com/Maxi">
+                    <i class="fab fa-dribbble"></i>
+                  </a> {% endcomment %}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+  
+    
+>>>>>>> d954deeb70cc34c4887382c2e98f17a06bcc3b1c
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 
@@ -733,6 +917,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 
+<<<<<<< HEAD
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -740,6 +925,28 @@
 <script>
   AOS.init();
 </script>
+=======
+<script>
+  AOS.init();
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $('#imageModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var name = button.data('name'); // Extract info from data-* attributes
+        var description = button.data('description');
+        var imageUrl = button.data('image-url');
+
+        var modal = $(this);
+        modal.find('.modal-title').text('Image Details');
+        modal.find('#modalName').text(name);
+        modal.find('#modalDescription').text(description);
+        modal.find('#modalImage').attr('src', imageUrl);
+    });
+</script>
+>>>>>>> d954deeb70cc34c4887382c2e98f17a06bcc3b1c
   </body>
   <!-- End Body -->
 </html>
