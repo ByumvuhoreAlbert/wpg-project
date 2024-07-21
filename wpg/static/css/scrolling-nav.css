@@ -1,7 +1,4 @@
-.navbar{
-	background:transparent !important;
-	padding: 0 0;
-}
+
 .navbar a.nav-link{
 	color:#fff;
 	padding: 5px 15px !important;
@@ -12,17 +9,14 @@
 .navbar .nav-link.active{
 	color:#fff;
 }
-.navbar.navbar-bg-onscroll a.nav-link{
-	color:rgba(255,255,255,.5);
-}
+
 .navbar.navbar-bg-onscroll a.nav-link:hover{
-	color:#fff; 
+	color:#fff;
 }
 .navbar, .navbar-bg-onscroll, a.nav-link.active{
-	color:#fff; 
+	color:#fff;
 }
 .navbar-bg-onscroll{
-	background: #ffffff !important;
 	box-shadow: 1px 1px 1px #3333331f;
 }
 
@@ -38,13 +32,13 @@
     color: #fff !important;
 }
 
-.navbar .navbar-nav .nav-item .nav-link { 
+.navbar .navbar-nav .nav-item .nav-link {
     padding: 0.625rem 1.25rem;
     -webkit-transition: all 1s;
     -moz-transition: all 1s;
     -ms-transition: all 1s;
     -o-transition: all 1s;
-    transition: all 1s; 
+    transition: all 1s;
 }
 .navbar .navbar-nav .nav-item .nav-link.active {
     background: #dc8e248c !important;
@@ -59,7 +53,7 @@
 ------------------------------------*/
 @media (max-width: 767px) {
   .navbar-expand-sm.fixed-top {
-    background-color: rgba(27, 30, 36, 0.3); 
+    background-color: rgba(27, 30, 36, 0.3);
   }
   .hero-img {
     background-repeat: no-repeat;
@@ -70,7 +64,7 @@
 
 @media (max-width: 991px) {
   .navbar-expand-md.fixed-top {
-    background-color: rgba(27, 30, 36, 0.3); 
+    background-color: rgba(27, 30, 36, 0.3);
   }
   .onCollapse{
 	  background:#fff;
@@ -87,4 +81,4 @@
     padding-left: 15px;
     padding-right: 15px;
   }
-} 
+}
