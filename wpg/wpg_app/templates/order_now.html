@@ -48,7 +48,7 @@
                     <div class="col-md-6 mb-3">
                         <div class="card" style="width: 18rem; margin-bottom: 20px;">
                             {% if order.photo %}
-                            <img src="{{ order.photo.url }}" alt="Order Image" height="300" width="400">
+                            <img src="{{ order.photo.url }}" alt="Order Image" class="img-fluid">
                             {% endif %}
                         </div>
                     </div>
@@ -56,54 +56,41 @@
                         <h2>Fill Out Your Order</h2>
                         <form method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label for="" class="form-label">Full Name</label>
-                                    <input type="text" name="" value="" class="form-control form-control-sm">
-                                </div>
-                                <div class="col mb-3">
-                                    <label class="form-label">Telephone</label>
-                                    <input type="numer" name="" value="" class="form-control form-control-sm">
-                                </div>
+                            <div class="mb-3">
+                                <label for="id_full_name" class="form-label">Full Name</label>
+                                <input type="text" name="full_name" id="id_full_name" class="form-control" required>
                             </div>
-
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label for="" class="form-label">address 1(District)</label>
-                                    <input type="text" name="" value="" class="form-control form-control-sm">
-                                </div>
-                                <div class="col mb-3">
-                                    <label for="" class="form-label">Address 2(Sector)</label>
-                                    <input type="text" name="" value="" class="form-control form-control-sm">
-                                </div>
+                            <div class="mb-3">
+                                <label for="id_telephone" class="form-label">Telephone</label>
+                                <input type="text" name="telephone" id="id_telephone" class="form-control" required>
                             </div>
-
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label class="form-label">Address 3(Cell)</label>
-                                    <input type="text" name="" value="" class="form-control form-control-sm">
-                                </div>
-                                <div class="col mb-3">
-                                    <label for="" class="form-label">address 4(Village)</label>
-                                    <input type="text" name="" value="" class="form-control form-control-sm">
-                                </div>
+                            <div class="mb-3">
+                                <label for="id_address_1" class="form-label">Address 1 (District)</label>
+                                <input type="text" name="address_1" id="id_address_1" class="form-control" required>
                             </div>
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label for="" class="form-label">Order Name</label>
-                                    <input type="text" name="" value="{{ order.caption }}" class="form-control form-control-sm">
-                                </div>
-                                <div class="col mb-3">
-                                    <label for="" class="form-label">Price</label>
-                                    <input type="text" name="" value="{{ order.price }}" class="form-control form-control-sm">
-                                </div>
+                            <div class="mb-3">
+                                <label for="id_address_2" class="form-label">Address 2 (Sector)</label>
+                                <input type="text" name="address_2" id="id_address_2" class="form-control" required>
                             </div>
-
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label for="" class="form-label">Date Of Completion</label>
-                                    <input type="date" name="" value="" class="form-control form-control-sm">
-                                </div>
+                            <div class="mb-3">
+                                <label for="id_address_3" class="form-label">Address 3 (Cell)</label>
+                                <input type="text" name="address_3" id="id_address_3" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_address_4" class="form-label">Address 4 (Village)</label>
+                                <input type="text" name="address_4" id="id_address_4" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_order_name" class="form-label">Order Name</label>
+                                <input type="text" name="order_name" id="id_order_name" class="form-control" value="{{ order.caption }}" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_price" class="form-label">Price</label>
+                                <input type="text" name="price" id="id_price" class="form-control" value="{{ order.price }}" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_date_of_completion" class="form-label">Date Of Completion</label>
+                                <input type="date" name="date_of_completion" id="id_date_of_completion" class="form-control" required>
                             </div>
                             <button type="submit" class="btn btn-success float-end">Order Now</button>
                         </form>

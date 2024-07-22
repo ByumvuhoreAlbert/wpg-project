@@ -1,43 +1,52 @@
 
+from email.mime import image
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import ContactMessage, Order, UploadImage
-from .forms import ContactForm, OrderForm
+from django.contrib import messages
+from .models import ContactMessage, Order, UploadImage, UploadImage
+from .forms import ContactForm, OrderForm, UploadImageForm
 
 def index(request):
-    # Fetch messages for display on the index page
-    messages = ContactMessage.objects.all()
-    orders = Order.objects.all()  # Fetch orders for display on the index page
-    return render(request, 'index.html', {'messages': messages, 'orders': orders})
-
-def submit_message(request):
     if request.method == 'POST':
         form = ContactForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('index')  # Refresh the page to show the new message
     else:
         form = ContactForm()
-    return render(request, 'submit_message.html', {'form': form})
+
+    # Fetch messages and orders for display
+    contact_messages = ContactMessage.objects.all()
+    orders = Order.objects.all()
+
+    return render(request, 'index.html', {
+        'contact_messages': contact_messages,
+        'orders': orders,
+        'form': form
+    })
+
 
 def orders_view(request):
     if request.method == 'POST':
         form = OrderForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Order placed successfully!')
             return redirect('index')
+        else:
+            messages.error(request, 'There was an error placing your order.')
     else:
         form = OrderForm()
-    return render(request, 'orders.html', {'form': form})
+
+    orders = Order.objects.all()  # Retrieve all orders
+    return render(request, 'orders.html', {'form': form, 'orders': orders})
 
 
 def order_now(request, order_id):
     order = get_object_or_404(Order, id=order_id)
 
     if request.method == 'POST':
-        form = OrderForm(request.POST, request.FILES)
+        form = OrderForm(request.POST, request.FILES, instance=order)
         if form.is_valid():
-            # Process the form data here
-            # For example, save the order or send a confirmation email
             form.save()  # Save the form data to the database
             return redirect('index')  # Redirect to the index page after successful form submission
     else:
@@ -50,36 +59,26 @@ def order_now(request, order_id):
 
     return render(request, 'order_now.html', {'order': order, 'form': form})
 
-def admin_panel(request):
-    return render(request, 'admin_panel.html')
-
-# views.py
-from django.shortcuts import render
-
-def view_order(request):
-    return render(request, 'view_order.html')
-
-def add_products(request):
-    return render(request, 'add_products.html')
-
-def add_new(request):
-    return render(request, 'add_new.html')
-
-def add_event(request):
-    return render(request, 'add_event.html')
-    
-
-# views.py
-
-from django.shortcuts import render, redirect
-from .models import UploadImage
-from .forms import UploadImageForm
+# def admin_panel(request):
+#     return render(request, 'admin_panel.html')
+#
+# # views.py
+# from django.shortcuts import render
+#
+# def view_order(request):
+#     return render(request, 'view_order.html')
+#
+# def add_products(request):
+#     return render(request, 'add_products.html')
+#
+# def add_new(request):
+#     return render(request, 'add_new.html')
+#
+# def add_event(request):
+#     return render(request, 'add_event.html')
 
 
-def index(request):
-    images = UploadImage.objects.all()
-    return render(request, 'index.html', {'images': images})
-
+#Add_PROJECT IN INDEX
 def Addproject(request):
     if request.method == 'POST':
         form = UploadImageForm(request.POST, request.FILES)
@@ -90,7 +89,12 @@ def Addproject(request):
         form = UploadImageForm()
     return render(request, 'Addproject.html', {'form': form})
 
-
-
-
-
+def index(request):
+    contact_messages = ContactMessage.objects.all()
+    orders = Order.objects.all()
+    images = UploadImage.objects.all()
+    return render(request, 'index.html', {
+        'contact_messages': contact_messages,
+        'orders': orders,
+        'images': images
+    })

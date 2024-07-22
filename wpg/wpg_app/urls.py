@@ -1,27 +1,31 @@
-<<<<<<< HEAD
+
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
-from .views import index, submit_message, orders_view, order_now, admin_panel,view_order, add_new, add_event, add_products
+from .views import index,  Addproject, orders_view, order_now #submit_message, admin_panel,view_order, add_new, add_event, add_products,
 
 urlpatterns = [
     path('', index, name='index'),
-    path('submit_message/', submit_message, name='submit_message'),
+    #path('submit_message/', submit_message, name='submit_message'),
     path('orders/', orders_view, name='orders'),
     path('order_now/<int:order_id>/', order_now, name='order_now'),
-    path('admin_panel/', admin_panel, name='admin_panel'),
+    # path('admin_panel/', admin_panel, name='admin_panel'),
 
-    path('view-order/', view_order, name='view_order'),
-    path('add-new/', add_new, name='add_new'),
-    path('add-products/', add_products, name='add_products'),
-    path('add-event/', add_event, name='add_event'),
-=======
-# urls.py
+    # path('view-order/', view_order, name='view_order'),
+    # path('add-new/', add_new, name='add_new'),
+    # path('add-products/', add_products, name='add_products'),
 
-from django.urls import path
-from . import views
+    # #Add_Event
+    # path('add-event/', add_event, name='add_event'),
 
-urlpatterns = [
-    path('Addproject/', views.Addproject, name='Addproject'),
-    path('', views.index, name='index'),
-   # path('delete_upload_image/', views.delete_upload_image_view, name='delete_upload_image'),
->>>>>>> d954deeb70cc34c4887382c2e98f17a06bcc3b1c
+#Add_Project
+    path('Addproject/', Addproject, name='Addproject'),
+
+    #Static and media URL patterns (if needed),
+    # path('static/<path:path>/', static_serve, name='static'),
+    # path('media/<path:path>/', media_serve, name='media'),
+
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

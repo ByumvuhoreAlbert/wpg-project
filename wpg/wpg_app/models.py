@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # models.py
 from django.db import models
 
@@ -20,8 +20,8 @@ class Order(models.Model):
 
     def __str__(self):
         return self.caption
-=======
-from django.db import models
+
+
 
 class UploadImage(models.Model):
     name = models.CharField(max_length=100)
@@ -30,4 +30,4 @@ class UploadImage(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
     
     
->>>>>>> d954deeb70cc34c4887382c2e98f17a06bcc3b1c
+
