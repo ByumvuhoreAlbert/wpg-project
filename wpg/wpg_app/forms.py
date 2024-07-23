@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import ContactMessage, Order, UploadImage
+from .models import ContactMessage, Order, UploadImage, OrderedProduct
 
 class ContactForm(forms.ModelForm):
     class Meta:
@@ -20,3 +20,24 @@ class UploadImageForm(forms.ModelForm):
 class DeleteUploadImageForm(forms.Form):
     image_id = forms.IntegerField(widget=forms.HiddenInput())
 
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['photo']
+
+
+class OrderedProductForm(forms.ModelForm):
+    class Meta:
+        model = OrderedProduct
+        fields = [
+            'full_name', 'telephone', 'address_1', 'address_2',
+            'address_3', 'address_4', 'products', 'sells'
+        ]
+
+# class OrderedProductForm(forms.ModelForm):
+#     class Meta:
+#         model = OrderedProduct
+#         fields = [
+#             'full_name', 'telephone', 'address_1', 'address_2', 'address_3',
+#             'address_4', 'order_name', 'price', 'date_of_completion', 'photo'
+#         ]

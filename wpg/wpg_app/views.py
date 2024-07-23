@@ -2,8 +2,8 @@
 from email.mime import image
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
-from .models import ContactMessage, Order, UploadImage, UploadImage
-from .forms import ContactForm, OrderForm, UploadImageForm
+from .models import ContactMessage, Order, UploadImage, UploadImage, OrderedProduct
+from .forms import ContactForm, OrderForm, UploadImageForm, OrderedProductForm
 
 def index(request):
     if request.method == 'POST':
@@ -45,19 +45,47 @@ def order_now(request, order_id):
     order = get_object_or_404(Order, id=order_id)
 
     if request.method == 'POST':
-        form = OrderForm(request.POST, request.FILES, instance=order)
-        if form.is_valid():
-            form.save()  # Save the form data to the database
+        order_form = OrderForm(request.POST, request.FILES, instance=order)
+        ordered_product_form = OrderedProductForm(request.POST, request.FILES)
+        if order_form.is_valid() and ordered_product_form.is_valid():
+            order_form.save()
+            ordered_product = ordered_product_form.save(commit=False)
+            ordered_product.order = order
+            # If there's no photo in the form, use the order's photo
+            if not ordered_product.photo:
+                ordered_product.photo = order.photo
+            ordered_product.save()
             return redirect('index')  # Redirect to the index page after successful form submission
     else:
-        form = OrderForm(initial={
-            'caption': order.caption,
-            'description': order.description,
-            'price': order.price,
-            'photo': order.photo
-        })
+        order_form = OrderForm(instance=order)
+        ordered_product_form = OrderedProductForm()
 
-    return render(request, 'order_now.html', {'order': order, 'form': form})
+    return render(request, 'order_now.html', {
+        'order': order,
+        'order_form': order_form,
+        'ordered_product_form': ordered_product_form
+    })
+
+# def order_now(request, order_id):
+#     order = get_object_or_404(Order, id=order_id)
+#
+#     if request.method == 'POST':
+#         order_form = OrderForm(request.POST, request.FILES, instance=order)
+#         ordered_product_form = OrderedProductForm(request.POST)
+#         if ordered_product_form.is_valid():
+#             ordered_product = ordered_product_form.save(commit=False)
+#             ordered_product.order = order
+#             ordered_product.save()
+#             return redirect('index')  # Redirect to the index page after successful form submission
+#     else:
+#         order_form = OrderForm(instance=order)
+#         ordered_product_form = OrderedProductForm()
+#
+#     return render(request, 'order_now.html', {
+#         'order': order,
+#         'order_form': order_form,
+#         'ordered_product_form': ordered_product_form
+#     })
 
 # def admin_panel(request):
 #     return render(request, 'admin_panel.html')
