@@ -59,8 +59,8 @@ def order_now(request, order_id):
 
     return render(request, 'order_now.html', {'order': order, 'form': form})
 
-# def admin_panel(request):
-#     return render(request, 'admin_panel.html')
+def admin_panel(request):
+     return render(request, 'admin_panel.html')
 #
 # # views.py
 # from django.shortcuts import render
@@ -98,3 +98,57 @@ def index(request):
         'orders': orders,
         'images': images
     })
+from django.shortcuts import render
+from .models import UploadImage
+
+def update_project(request, image_id):
+    image = UploadImage.objects.get(pk=image_id)
+    # Update fields as needed
+    image.name = 'Updated Name'
+    image.description = 'Updated Description'
+    image.category = 'Updated Category'
+    image.save()
+    return render(request, 'update_success.html', {'image': image})
+
+
+
+
+
+
+
+#CRUD methods
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import UploadImage
+from .forms import UploadImageForm
+
+def upload_image(request):
+    if request.method == 'POST':
+        form = UploadImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('upload_success')  # Redirect to a success page or another view
+    else:
+        form = UploadImageForm()
+    return render(request, 'upload_image.html', {'form': form})
+
+def view_image(request, image_id):
+    image = get_object_or_404(UploadImage, pk=image_id)
+    return render(request, 'view_image.html', {'image': image})
+
+def update_image(request, image_id):
+    image = get_object_or_404(UploadImage, pk=image_id)
+    if request.method == 'POST':
+        form = UploadImageForm(request.POST, request.FILES, instance=image)
+        if form.is_valid():
+            form.save()
+            return redirect('view_image', image_id=image_id)  # Redirect to view image after update
+    else:
+        form = UploadImageForm(instance=image)
+    return render(request, 'update_image.html', {'form': form})
+
+def delete_image(request, image_id):
+    image = get_object_or_404(UploadImage, pk=image_id)
+    if request.method == 'POST':
+        image.delete()
+        return redirect('image_deleted')  # Redirect to a success page or another view
+    return render(request, 'delete_image.html', {'image': image})

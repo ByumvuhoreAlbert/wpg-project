@@ -6,6 +6,13 @@
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<!-- Bootstrap JS (optional for dropdown functionality) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzW9zCpeDffFVZrAo5Qx2xkuFzFg/ifX/pG5fm" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
@@ -73,17 +80,48 @@
             <div class="position-sticky sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#" onclick="loadContent('view-order')">View Order</a>
+                        <a class="nav-link active" href="#" onclick="loadContent('view-order')">
+                            <i class="fas fa-user-shield" style="font-size: 35px;"></i><br>ADMIN PANEL
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="loadContent('add-products')">Add Products</a>
+                    
+                    
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="loadContent('add-new')">Add New</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="loadContent('add-event')">Add Event</a>
-                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family: Impact; font-size: 25px;">
+                            OPERATIONS
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#" onclick="loadContent('Addproject')" style="font-size: 20px; font-family: 'Bahnschrift Light', cursive;">Projects</a>
+                            <ul>
+                                <li><a class="dropdown-item" href="/Addproject" onclick="loadContent('view-projects')" style="font-size: 20px; font-family: 'Bahnschrift Light', cursive;">Add Project</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="loadContent('view-projects')" style="font-size: 20px; font-family: 'Bahnschrift Light', cursive;">Update Project</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="loadContent('view-projects')" style="font-size: 20px; font-family: 'Bahnschrift Light', cursive;">Delete Project</a></li>
+                            </ul>
+
+                            <a class="dropdown-item" href="#" onclick="loadContent('add-products')" style="font-size: 20px; font-family: 'Bahnschrift Light', cursive;">Products</a>
+                            <ul>
+                                <li><a class="dropdown-item" href="#" onclick="loadContent('view-projects')" style="font-size: 20px; font-family: 'Bahnschrift Light', cursive;">Add Product</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="loadContent('view-projects')" style="font-size: 20px; font-family: 'Bahnschrift Light', cursive;">Update Product</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="loadContent('view-projects')" style="font-size: 20px; font-family: 'Bahnschrift Light', cursive;">Delete Product</a></li>
+                            </ul>
+                            <a class="dropdown-item" href="#" onclick="loadContent('add-new')" style="font-size: 20px; font-family: 'Bahnschrift Light', cursive;">Members</a>
+                            <ul>
+                                <li><a class="dropdown-item" href="#" onclick="loadContent('view-projects')" style="font-size: 20px; font-family: 'Bahnschrift Light', cursive;">New Member</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="loadContent('view-projects')" style="font-size: 20px; font-family: 'Bahnschrift Light', cursive;">Update Member</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="loadContent('view-projects')" style="font-size: 20px; font-family: 'Bahnschrift Light', cursive;">Delete Member</a></li>
+                            </ul>
+                            <a class="dropdown-item" href="#" onclick="loadContent('add-event')" style="font-size: 20px; font-family: 'Bahnschrift Light', cursive;">Events</a>
+                            <ul>
+                                <li><a class="dropdown-item" href="#" onclick="loadContent('view-projects')" style="font-size: 20px; font-family: 'Bahnschrift Light', cursive;">New Event</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="loadContent('view-projects')" style="font-size: 20px; font-family: 'Bahnschrift Light', cursive;">Update Event</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="loadContent('view-projects')" style="font-size: 20px; font-family: 'Bahnschrift Light', cursive;">Delete Event</a></li>
+                            </ul>
+                        </div>
+                        </li>
+                    
+                    
                 </ul>
             </div>
         </nav>
