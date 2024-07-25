@@ -1,5 +1,4 @@
 from django import forms
-
 from .models import ContactMessage, Order, UploadImage, OrderedProduct
 
 class ContactForm(forms.ModelForm):
@@ -7,7 +6,7 @@ class ContactForm(forms.ModelForm):
         model = ContactMessage
         fields = ['fullname', 'email', 'photo', 'message']
 
-class OrderForm(forms.ModelForm):
+class OrderForms(forms.ModelForm):
     class Meta:
         model = Order
         fields = ['caption', 'description', 'price', 'photo']
