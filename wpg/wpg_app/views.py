@@ -41,7 +41,7 @@ def orders_view(request):
     return render(request, 'orders.html', {'form': form, 'orders': orders})
 
 
-def order_now(request, order_id):
+def order_now(request, order_id):  
     order = get_object_or_404(Order, id=order_id)
 
     if request.method == 'POST':
