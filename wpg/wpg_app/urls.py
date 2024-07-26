@@ -2,7 +2,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from .views import index, order_now, admin_panel, view_order, projects, products, members, events, add_project, delete_ordered_product, edit_ordered_product, orders_view, delete_order, edit_order
+from .views import index, order_now, admin_panel, view_order, projects, products, members, events, add_project, delete_ordered_product, edit_ordered_product, orders_view, delete_order, edit_order, member_list,member_detail,member_create,member_update,member_delete, event_list,event_detail,event_create,event_update,event_delete
 
 urlpatterns = [
     path('', index, name='index'),
@@ -22,7 +22,23 @@ urlpatterns = [
     path('edit_ordered_product/<int:product_id>/', edit_ordered_product, name='edit_ordered_product'),
     path('orders/delete/<int:order_id>/', delete_order, name='delete_order'),
     path('orders/edit/<int:order_id>/', edit_order, name='edit_order'),
+
+    #Member CRUD methods
+    path('member_list', member_list, name='member_list'),
+    path('member/<int:pk>/', member_detail, name='member_detail'),
+    path('member/new/', member_create, name='member_create'),
+    path('member/<int:pk>/edit/', member_update, name='member_update'),
+    path('member/<int:pk>/delete/', member_delete, name='member_delete'),
+    
+    #EVENT methods
+    path('event_list/', event_list, name='event_list'),
+    path('event_detail/<int:pk>/', event_detail, name='event_detail'),
+    path('event_create/', event_create, name='event_create'),
+    path('events/<int:pk>/edit/', event_update, name='event_update'),
+    path('events/<int:pk>/delete/', event_delete, name='event_delete'),
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

@@ -1,4 +1,5 @@
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -77,26 +78,23 @@
         <nav id="sidebar" class="sidebar d-md-block bg-light">
             <div class="position-sticky sidebar-sticky">
                 <ul class="nav flex-column">
-                    <li class="nav-item" style="padding:20px;">
-                      <i class="fas fa-user-shield" style="font-size: 35px;"></i><br>ADMIN PANEL
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" data-url="{% url 'view_order' %}">
+                            <i class="fas fa-user-shield" style="font-size: 35px;"></i><br>ADMIN PANEL
+                        </a>
                     </li>
                     <li class="nav-item">
-<<<<<<< HEAD
-                      <a class="nav-link active" href="#" data-url="{% url 'products' %}" style="font-family: Impact; font-size: 18px;">
-                          Products
+                      <a class="nav-link" href="#" data-url="{% url 'orders' %}" style="font-family: Impact; font-size: 18px;">
+                          Order
                       </a>
-                      <a class="nav-link" href="#" data-url="{% url 'view_order' %}" style="font-family: Impact; font-size: 18px;">
-                          Orders
-                      </a>
-                        <a class="nav-link" href="#" data-url="{% url 'projects' %}" style="font-family: Impact; font-size: 18px;">
+                        <a class="nav-link" href="#" data-url="{% url 'Addproject' %}" style="font-family: Impact; font-size: 18px;">
                             Projects
-=======
+                        </a>
                         <a class="nav-link" href="#" data-url="{% url 'member_list' %}" style="font-family: Impact; font-size: 18px;">
                             Members
                         </a>
                         <a class="nav-link" href="#" data-url="{% url 'event_list' %}" style="font-family: Impact; font-size: 18px;">
                           Events
->>>>>>> e9e8536114e3586496afc3389c2e0d595e05aff3
                         </a>
                     </li>
                 </ul>
@@ -105,14 +103,27 @@
 
         <div class="card content">
           <div class="card-header">
-<<<<<<< HEAD
-            <h3>Dashboard</h3>
-=======
             <center>
             <h1>ADMIN DASHBOARD</h1></center>
->>>>>>> e9e8536114e3586496afc3389c2e0d595e05aff3
           </div>
-          <div class="card-body" id="content">
+          <h1>Event List</h1>
+          <a href="{% url 'event_create' %}" class="btn btn-primary">Add New Event</a>
+          <ul>
+            {% for event in events %}
+              <li>
+                <a href="{% url 'event_detail' event.pk %}">{{ event.title }}</a>
+                ({{ event.start_time }} - {{ event.end_time }})
+              </li>
+            {% endfor %}
+          </ul>
+        </center>
+        {% endblock %}
+        
+          <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+          <![endif]-->
+          
+          <script src="" async defer></script>
             <!-- Default content will be loaded here -->
           </div>
         </div>
