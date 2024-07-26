@@ -54,41 +54,56 @@
              <h2>Fill Out Your Order</h2>
              <form method="POST" enctype="multipart/form-data">
                {% csrf_token %}
-               <div class="mb-3">
+               <div class="row">
+               <div class="col mb-3">
                  <label for="id_full_name" class="form-label">Full Name</label>
                  <input type="text" name="full_name" id="id_full_name" class="form-control" required>
                </div>
-               <div class="mb-3">
+               <div class="col mb-3">
                  <label for="id_telephone" class="form-label">Telephone</label>
                  <input type="text" name="telephone" id="id_telephone" class="form-control" required>
                </div>
-               <div class="mb-3">
+             </div>
+             <div class="row">
+               <div class="col mb-3">
                  <label for="id_address_1" class="form-label">Address 1 (District)</label>
                  <input type="text" name="address_1" id="id_address_1" class="form-control" required>
                </div>
-               <div class="mb-3">
+               <div class="col mb-3">
                  <label for="id_address_2" class="form-label">Address 2 (Sector)</label>
                  <input type="text" name="address_2" id="id_address_2" class="form-control" required>
                </div>
-               <div class="mb-3">
+             </div>
+             <div class="row">
+               <div class="col mb-3">
                  <label for="id_address_3" class="form-label">Address 3 (Cell)</label>
                  <input type="text" name="address_3" id="id_address_3" class="form-control" required>
                </div>
-               <div class="mb-3">
+               <div class="col mb-3">
                  <label for="id_address_4" class="form-label">Address 4 (Village)</label>
                  <input type="text" name="address_4" id="id_address_4" class="form-control" required>
                </div>
-               <div class="mb-3">
+             </div>
+             <div class="row">
+               <div class="col mb-3">
+                 <label for="" class="form-label">Date of Completion</label>
+                 <input type="date" name="completed" id="id_completed" value="" class="form-control">
+               </div>
+               <div class="col mb-3">
                  <label for="id_order_name" class="form-label">Order Name</label>
                  <input type="text" name="products" id="id_products" class="form-control" value="{{ order.caption }}" readonly>
                </div>
-               <div class="mb-3">
+             </div>
+             <div class="row">
+               <div class="col mb-3">
                  <label for="id_price" class="form-label">Price</label>
                  <input type="text" name="sells" id="id_sells" class="form-control" value="{{ order.price }}" readonly>
                </div>
-               <div class="mb-3">
-                 {{ order_form.as_p }}
+               <div class="col mb-3">
+                 <label for="" class="form-label">Order Photo</label>
+                 <input type="text" name="photo" id="id_photo" value="{{ order.photo.url }}" class="form-control" readonly>
                </div>
+             </div>
                <button type="submit" class="btn btn-success float-end">Order Now</button>
              </form>
            </div>

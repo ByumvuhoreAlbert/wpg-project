@@ -218,47 +218,6 @@
         </div>
 </section>
 
-<section class="wt-section bg-primary" style="padding-bottom:20px;">
-  <div class="container">
-      <div class="row justify-content-md-center text-center pb-lg-4 mb-lg-5 mb-4">
-          <div class="col-md-8 text-center w-md-50 mx-auto mb-0">
-              <h2 class="mb-md-2">Projects</h2>
-              <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-          </div>
-      </div>
-      <!-- Feature Blocks -->
-      <div class="row">
-          <div class="col-md-4">
-              <div class="card" style="width: 18rem;">
-                  <img src="{% static 'img/portfolio/img4.jpg' %}" class="card-img-top" alt="img">
-                  <div class="card-body">
-                      <h5>James Home</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card" style="width: 18rem;">
-                  <img src="{% static 'img/portfolio/img5.jpg' %}" class="card-img-top" alt="img">
-                  <div class="card-body">
-                      <h5>Markwine Apt</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card" style="width: 18rem;">
-                  <img src="{% static 'img/portfolio/img6.jpg' %}" class="card-img-top" alt="img">
-                  <div class="card-body">
-                      <h5>AtNt Business</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <!-- End Feature Blocks -->
-  </div>
-</section>
 
 <section class="wt-section" id="portfolio">
       <div class="container">
@@ -269,18 +228,21 @@
               </div>
           </div>
           <div class="row">
-            {% for image in images %}
+            {% for project in projects %}
                 <div class="col-sm-4 mb-4 d-flex justify-content-center align-items-center" >
                     <div class="image-container">
-                      {% if image.image %}
-                        <img src="{{ image.image.url }}" alt="Image" class="img-fluid" width="250" height="250">
+                      {% if project.image %}
+                        <img src="{{ project.image.url }}" alt="Image" class="img-fluid" width="250" height="350">
                       {% else %}
                         <img src="{% static 'img/default.jpg' %}" alt="No Image" class="img-fluid">
                       {% endif %}
                       <button type="button" class="btn btn-outline text-primary fs-6 fw-bold btn-sm" data-toggle="modal" data-target="#imageModal"
-                              data-name="{{ image.name }}"
-                              data-description="{{ image.description }}"
-                              data-image-url="{{ image.image.url }}" style="margin:10px 0px 10px 80px;">
+                              data-title="{{ project.title }}"
+                              data-place="{{ project.place }}"
+                              data-start="{{ project.start }}"
+                              data-end="{{ project.end }}"
+                              data-description="{{ project.description }}"
+                              data-image-url="{{ project.image.url }}" style="margin:10px 0px 10px 80px;">
                           View Details
                       </button>
                     </div>
@@ -291,7 +253,7 @@
     </section>
 
 <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
           <div class="modal-header">
               <h5 class="modal-title" id="imageModalLabel">Image Details</h5>
@@ -300,10 +262,22 @@
               </button>
           </div>
           <div class="modal-body">
-              <h5 id="modalName"></h5>
-              <p id="modalDescription"></p>
+          <h5 id="modalTitle"></h5>
+            <div class="row">
+              <div class="col">
+              <h6 id="modalPlace"></h6>
+              <p> From: <span id="modalStart"></span> To: <span id="modalEnd"></span> </p>
+              </div>
+              <div class="col">
               <img id="modalImage" src="" alt="Image" class="img-fluid">
-          </div>
+              </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <p id="modalDescription"></p>
+                </div>
+              </div>
+            </div>
       </div>
   </div>
 </div>
@@ -472,7 +446,7 @@
             <div class="col-md-3">
                 <div class="card" style="width: 18rem; margin-bottom: 20px;">
                     {% if order.photo %}
-                    <img src="{{ order.photo.url }}" class="card-img-top" alt="img">
+                    <img src="{{ order.photo.url }}" class="card-img-top" alt="img" style="height:200px;">
                     {% else %}
                     <img src="{% static 'img/default.jpg' %}" class="card-img-top" alt="default-img">
                     {% endif %}
@@ -599,8 +573,8 @@
   </div>
     </section>
 
-		 <div class="row" data-aos="fade-up" data-aos-easing="linear" data-aos-delay="100">
-  <iframe src="https://www.google.com/maps/place/Karongi+District+Office/@-2.0525559,29.3943833,15z/data=!3m1!4b1!4m6!3m5!1s0x19dd2917394f3443:0x2156ff1e06866db1!8m2!3d-2.052556!4d29.4128374!16s%2Fg%2F11gsn1tg6w?entry=ttu" width="100%" height="320" frameborder="0" style="border:0" allowfullscreen></iframe>
+		<div class="row" data-aos="fade-up" data-aos-easing="linear" data-aos-delay="100">
+  <img src="https://www.openstreetmap.org/search?query=rubengera#map=15/-2.0645/29.4133" width="100%" height="320" frameborder="0" style="border:0" allowfullscreen>
  </div>
 
 
@@ -611,14 +585,16 @@
 
     <!-- Footer -->
     <div class="d-flex justify-content-center">
-      <footer class="bg-dark py-1 fixed-bottom">
+      <footer class="bg-dark py-3 fixed-bottom">
         <div class="container">
           <div class="row">
             <div class="col-md-8 text-center text-md-left mb-3 mb-md-0">
-              <small class="text-white">
-                <a class="text-white" href="#">WPG| Wisdom Palace Group</a>
-                <br />&copy; 2024
-              </small>
+              <strong class="text-white fw-bold">
+                &copy; Copyright 2024 by <small class="text-white">
+                  <a class="text-white" href="#">WPG| Wisdom Palace Group</a>
+                </small>
+              </strong>
+
             </div>
 
             <div class="col-md-4 align-self-center">
@@ -665,19 +641,27 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-    $('#imageModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget); // Button that triggered the modal
-        var name = button.data('name'); // Extract info from data-* attributes
-        var description = button.data('description');
-        var imageUrl = button.data('image-url');
+    document.addEventListener('DOMContentLoaded', function() {
+        $('#imageModal').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var title = button.data('title'); // Extract info from data-* attributes
+            var place = button.data('place');
+            var start = button.data('start');
+            var end = button.data('end');
+            var description = button.data('description');
+            var imageUrl = button.data('image-url');
 
-        var modal = $(this);
-        modal.find('.modal-title').text('Image Details');
-        modal.find('#modalName').text(name);
-        modal.find('#modalDescription').text(description);
-        modal.find('#modalImage').attr('src', imageUrl);
+            var modal = $(this);
+            modal.find('.modal-title').text(title);
+            modal.find('#modalPlace').text(place);
+            modal.find('#modalStart').text(start);
+            modal.find('#modalEnd').text(end);
+            modal.find('#modalDescription').text(description);
+            modal.find('#modalImage').attr('src', imageUrl);
+        });
     });
 </script>
+
   </body>
   <!-- End Body -->
 </html>

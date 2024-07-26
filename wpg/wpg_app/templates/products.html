@@ -5,6 +5,43 @@
     <title></title>
   </head>
   <body>
-    <h1>hi jules</h1>
+    <h5 class="text-h2 p-2 m-3">List Of Published Products <a class="btn btn-info btn-sm float-end" href="{% url 'orders' %}">Add Product</a> </h5>
+    <table width="100%">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Photo</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ order.caption }}</td>
+            <td>{{ order.description }}</td>
+            <td>{{ order.price }}</td>
+            <td>
+                {% if order.photo %}
+                    <img src="{{ order.photo.url }}" alt="{{ order.caption }}" style="max-width: 100px; max-height: 100px;">
+                {% else %}
+                    No Photo
+                {% endif %}
+            </td>
+            <td>
+                <a class="btn btn-warning btn-sm" href="{% url 'edit_order' order.id %}">Edit</a>
+                <form method="post" action="{% url 'delete_order' order.id %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
   </body>
 </html>

@@ -2,8 +2,8 @@
 from email.mime import image
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
-from .models import ContactMessage, Order, UploadImage, UploadImage, OrderedProduct, UploadImage
-from .forms import ContactForm, OrderForms, OrderForm, UploadImageForm, OrderedProductForm, UploadImageForm
+from .models import ContactMessage, Order, OrderedProduct, Project
+from .forms import ContactForm, OrderForms, OrderForm, OrderedProductForm, ProjectForm
 
 def index(request):
     if request.method == 'POST':
@@ -17,10 +17,12 @@ def index(request):
     # Fetch messages and orders for display
     contact_messages = ContactMessage.objects.all()
     orders = Order.objects.all()
+    projects = Project.objects.all
 
     return render(request, 'index.html', {
         'contact_messages': contact_messages,
         'orders': orders,
+        'projects': projects,
         'form': form
     })
 
@@ -30,18 +32,17 @@ def orders_view(request):
         form = OrderForms(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Order placed successfully!')
-            return redirect('index')
+            messages.success(request, 'Order created successfully!')
+            return redirect('admin_panel')  # Redirect to a view that lists orders or any other page
         else:
-            messages.error(request, 'There was an error placing your order.')
+            messages.error(request, 'There was an error creating your order.')
     else:
         form = OrderForms()
 
-    orders = Order.objects.all()  # Retrieve all orders
-    return render(request, 'orders.html', {'form': form, 'orders': orders})
+    return render(request, 'orders.html', {'form': form})
 
 
-def order_now(request, order_id):  
+def order_now(request, order_id):
     order = get_object_or_404(Order, id=order_id)
 
     if request.method == 'POST':
@@ -67,66 +68,21 @@ def order_now(request, order_id):
     })
 
 
-
 def admin_panel(request):
      return render(request, 'admin_panel.html')
 
-
-
-
-#Add_PROJECT IN INDEX
-def Addproject(request):
-    if request.method == 'POST':
-        form = UploadImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else:
-        form = UploadImageForm()
-    return render(request, 'Addproject.html', {'form': form})
-
-def index(request):
-    contact_messages = ContactMessage.objects.all()
-    orders = Order.objects.all()
-    images = UploadImage.objects.all()
-    return render(request, 'index.html', {
-        'contact_messages': contact_messages,
-        'orders': orders,
-        'images': images
-    })
-from django.shortcuts import render
-from .models import UploadImage
-
-def update_project(request, image_id):
-    image = UploadImage.objects.get(pk=image_id)
-    # Update fields as needed
-    image.name = 'Updated Name'
-    image.description = 'Updated Description'
-    image.category = 'Updated Category'
-    image.save()
-    return render(request, 'update_success.html', {'image': image})
-
-
-def upload_image(request):
-    if request.method == 'POST':
-        form = UploadImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('upload_success')  # Redirect to a success page or another view
-    else:
-        form = UploadImageForm()
-    return render(request, 'upload_image.html', {'form': form})
 
 def view_order(request):
     ordered_products = OrderedProduct.objects.all()
     return render(request, 'view_order.html', {'ordered_products': ordered_products})
 
-
 def projects(request):
-    return render(request, 'projects.html')
+    projects = Project.objects.all
+    return render(request, 'projects.html', {'projects': projects})
 
 def products(request):
-    return render(request, 'products.html')
+    orders = Order.objects.all()
+    return render(request, 'products.html', {'orders': orders})
 
 def members(request):
     return render(request, 'members.html')
@@ -155,3 +111,36 @@ def edit_ordered_product(request, product_id):
         form = OrderedProductForm(instance=product)
 
     return render(request, 'edit_ordered_product.html', {'form': form, 'product': product})
+
+
+def delete_order(request, order_id):
+    if request.method == 'POST':
+        order = get_object_or_404(Order, id=order_id)
+        order.delete()
+        messages.success(request, 'Order deleted successfully.')
+    return redirect('admin_panel')
+
+def edit_order(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+
+    if request.method == 'POST':
+        form = OrderForms(request.POST, request.FILES, instance=order)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Order updated successfully.')
+            return redirect('admin_panel')  # Redirect to admin_panel.html
+    else:
+        form = OrderForms(instance=order)
+
+    return render(request, 'orders.html', {'form': form, 'order': order})
+
+def add_project(request):
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('admin_panel')  # Redirect to a page where you list projects
+    else:
+        form = ProjectForm()
+
+    return render(request, 'Addproject.html', {'form': form})
