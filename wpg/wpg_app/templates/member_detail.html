@@ -47,8 +47,14 @@
           font-weight: bold;
         }
         .content {
-          height: 650px;
-          margin-left:230px;
+          margin-left: 230px;
+        }
+        .card-header {
+          background-color: #343a40;
+          color: white;
+        }
+        .card-content {
+          padding: 20px;
         }
     </style>
 </head>
@@ -83,10 +89,16 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                      <a class="nav-link" href="#" data-url="{% url 'orders' %}" style="font-family: Impact; font-size: 18px;">
+                          Order
+                      </a>
+                        <a class="nav-link" href="#" data-url="{% url 'Addproject' %}" style="font-family: Impact; font-size: 18px;">
+                            Projects
+                        </a>
                         <a class="nav-link" href="#" data-url="{% url 'member_list' %}" style="font-family: Impact; font-size: 18px;">
                             Members
                         </a>
-                        <a class="nav-link" href="#" data-url="{% url 'event_list' %}" style="font-family: Impact; font-size: 18px;">
+                        <a class="nav-link" href="#" data-url="{% url 'events' %}" style="font-family: Impact; font-size: 18px;">
                           Events
                         </a>
                     </li>
@@ -99,10 +111,20 @@
             <center>
             <h1>ADMIN DASHBOARD</h1></center>
           </div>
-          <div class="card-body" id="content">
-            <!-- Default content will be loaded here -->
+          <div class="card-body">
+            <h1>{{ member.fullname }}</h1>
+            <p>Telephone: {{ member.telephone }}</p>
+            <p>Email: {{ member.email }}</p>
+            <p>Role: {{ member.role }}</p>
+            <p>Facebook: {{ member.facebook_link }}</p>
+            <p>Instagram: {{ member.instagram_link }}</p>
+            <p>Twitter:{{member.twitter_link }}
+            <p><a href="{{ member.cv.url }}" class="btn btn-info">Download CV</a></p>
+            <a href="{% url 'member_update' member.pk %}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'member_delete' member.pk %}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'member_list' %}" class="btn btn-secondary">Back to Member List</a>
           </div>
-        </div>
+        </div> 
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

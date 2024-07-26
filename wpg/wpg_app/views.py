@@ -65,15 +65,8 @@ def order_now(request, order_id):
         'order_form': order_form,
         'ordered_product_form': ordered_product_form
     })
-
-
-
 def admin_panel(request):
      return render(request, 'admin_panel.html')
-
-
-
-
 #Add_PROJECT IN INDEX
 def Addproject(request):
     if request.method == 'POST':
@@ -88,12 +81,13 @@ def Addproject(request):
 def index(request):
     contact_messages = ContactMessage.objects.all()
     orders = Order.objects.all()
+    member = Member.objects.all()
     images = UploadImage.objects.all()
     return render(request, 'index.html', {
         'contact_messages': contact_messages,
         'orders': orders,
-        'images': images
-    })
+        'images': images,
+        })
 from django.shortcuts import render
 from .models import UploadImage
 
@@ -155,3 +149,85 @@ def edit_ordered_product(request, product_id):
         form = OrderedProductForm(instance=product)
 
     return render(request, 'edit_ordered_product.html', {'form': form, 'product': product})
+
+#MEMBER VIEWS CRUD
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Member
+from .forms import MemberForm
+
+def member_list(request):
+    members = Member.objects.all()
+    return render(request, 'member_list.html', {'members': members})
+
+def member_detail(request, pk):
+    member = get_object_or_404(Member, pk=pk)
+    return render(request, 'member_detail.html', {'member': member})
+
+def member_create(request):
+    if request.method == "POST":
+        form = MemberForm(request.POST, request.FILES)
+        if form.is_valid():
+            member = form.save()
+            return redirect('member_detail', pk=member.pk)
+    else:
+        form = MemberForm()
+    return render(request, 'member_form.html', {'form': form})
+
+def member_update(request, pk):
+    member = get_object_or_404(Member, pk=pk)
+    if request.method == "POST":
+        form = MemberForm(request.POST, request.FILES, instance=member)
+        if form.is_valid():
+            member = form.save()
+            return redirect('member_detail', pk=member.pk)
+    else:
+        form = MemberForm(instance=member)
+    return render(request, 'member_form.html', {'form': form})
+
+def member_delete(request, pk):
+    member = get_object_or_404(Member, pk=pk)
+    if request.method == "POST":
+        member.delete()
+        return redirect('member_list')
+    return render(request, 'member_confirm_delete.html', {'member': member})
+
+#EVENT VIEWS
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Event
+from .forms import EventForm
+
+def event_list(request):
+    events = Event.objects.all()
+    return render(request, 'event_list.html', {'events': events})
+
+def event_detail(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+    return render(request, 'event_detail.html', {'event': event})
+
+def event_create(request):
+    if request.method == 'POST':
+        form = EventForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('event_list')
+    else:
+        form = EventForm()
+    return render(request, 'event_form.html', {'form': form})
+
+def event_update(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+    if request.method == 'POST':
+        form = EventForm(request.POST, request.FILES, instance=event)
+        if form.is_valid():
+            form.save()
+            return redirect('event_detail', pk=event.pk)
+    else:
+        form = EventForm(instance=event)
+    return render(request, 'event_form.html', {'form': form})
+
+def event_delete(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+    if request.method == 'POST':
+        event.delete()
+        return redirect('event_list')
+    return render(request, 'event_confirm_delete.html', {'event': event})

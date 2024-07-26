@@ -7,7 +7,8 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <!-- Bootstrap JS (optional for dropdown functionality) -->
@@ -20,6 +21,28 @@
     <link type="text/css" rel="stylesheet" href="{% static 'css/mystyles.css' %}" />
     <link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
     <style>
+        .member-list-item {
+            display: block;
+            align-items: center;
+            margin-left:35%;
+            margin-bottom: 15px;
+        }
+        .member-list-item img {
+            width: 50px; /* Adjust the size as needed */
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .member-list-item a {
+            width:80px;
+            height:50px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .member-list-item a:hover {
+            text-decoration: underline;
+        }
         .data {
           margin-top: 80px;
         }
@@ -53,58 +76,23 @@
     </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-          <a class="navbar-brand" href="{% url 'index' %}" style="color: white;">WPG | <span>Wisdom Palace Group</span></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav">
-                  <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#top">Home</a></li>
-                  <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#services">Services</a></li>
-                  <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#about">About</a></li>
-                  <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#portfolio">Projects</a></li>
-                  <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#team">Team</a></li>
-                  <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#price">Price</a></li>
-                  <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#contact">Contact</a></li>
-              </ul>
-          </div>
-      </div>
-  </nav>
-
-<div class="container-fluid" style="margin-top:80px;">
-        <nav id="sidebar" class="sidebar d-md-block bg-light">
-            <div class="position-sticky sidebar-sticky">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#" data-url="{% url 'view_order' %}">
-                            <i class="fas fa-user-shield" style="font-size: 35px;"></i><br>ADMIN PANEL
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-url="{% url 'member_list' %}" style="font-family: Impact; font-size: 18px;">
-                            Members
-                        </a>
-                        <a class="nav-link" href="#" data-url="{% url 'event_list' %}" style="font-family: Impact; font-size: 18px;">
-                          Events
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="card content">
-          <div class="card-header">
-            <center>
-            <h1>ADMIN DASHBOARD</h1></center>
-          </div>
-          <div class="card-body" id="content">
-            <!-- Default content will be loaded here -->
-          </div>
-        </div>
+<div class="container mt-5">
+    <h1 class="text-center">Members List</h1>
+    <ul class="list-unstyled">
+        {% for member in members %}
+            <li class="member-list-item">
+                {% if member.profile_picture %}
+                    <img src="{{ member.profile_picture.url }}" alt="{{ member.fullname }}">
+                {% else %}
+                    <img src="{% static 'default-avatar.png' %}" alt="Default Avatar">
+                {% endif %}
+                <a href="{% url 'member_detail' member.pk %}">{{ member.fullname }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'member_create' %}" class="btn btn-primary">NEW MEMBER</a>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzW9zCpeDffFVZrAo5Qx2xkuFzFg/ifX/pG5fm" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
@@ -130,22 +118,7 @@
                 });
             }
         });
-
-        // Load default content
-        var defaultUrl = $('.sidebar .nav-link.active').data('url');
-        if (defaultUrl) {
-            $.ajax({
-                url: defaultUrl,
-                type: 'GET',
-                success: function(data) {
-                    $('#content').html(data);
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error loading default content:', error);
-                }
-            });
-        }
     });
-</script>
+    </script>
 </body>
 </html>

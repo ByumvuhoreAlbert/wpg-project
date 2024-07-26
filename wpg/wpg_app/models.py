@@ -55,3 +55,43 @@ class OrderedProduct(models.Model):
 
     def __str__(self):
         return f"{self.full_name} - {self.order.caption}"
+#MEMBER CRUD FUNCTIONS
+from django.db import models
+
+from django.db import models
+
+from django.db import models
+
+class Member(models.Model):
+    profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
+    fullname = models.CharField(max_length=255)
+    telephone = models.CharField(max_length=15)
+    email = models.EmailField(unique=True)
+    cv = models.FileField(upload_to='cvs/')
+    role = models.CharField(max_length=50)
+    
+    # New fields for social media links
+    facebook_link = models.URLField(blank=True, null=True)
+    instagram_link = models.URLField(blank=True, null=True)
+    twitter_link = models.URLField(blank=True, null=True)
+
+
+    def __str__(self):
+        return self.fullname
+
+#EVENTS
+from django.db import models
+
+class Event(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    location = models.CharField(max_length=255)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    image = models.ImageField(upload_to='event_images/', blank=True, null=True)
+    organizer = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return self.title
