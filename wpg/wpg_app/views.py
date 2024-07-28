@@ -2,8 +2,8 @@
 from email.mime import image
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
-from .models import ContactMessage, Order, OrderedProduct, Project,Member
-from .forms import ContactForm, OrderForms, OrderForm, OrderedProductForm, ProjectForm, MemberForm
+from .models import ContactMessage, Order, OrderedProduct, Project,Member, Events
+from .forms import ContactForm, OrderForms, OrderForm, OrderedProductForm, ProjectForm, MemberForm, EventForm
 
 def index(request):
     if request.method == 'POST':
@@ -14,18 +14,18 @@ def index(request):
     else:
         form = ContactForm()
 
-    # Fetch messages and orders for display
-    contact_messages = ContactMessage.objects.all()
+    contacts = ContactMessage.objects.all()
     orders = Order.objects.all()
-    projects = Project.objects.all
+    projects = Project.objects.all()
+    members = Member.objects.all()
 
     return render(request, 'index.html', {
-        'contact_messages': contact_messages,
+        'form': form,
+        'contacts': contacts,
         'orders': orders,
         'projects': projects,
-        'form': form
+        'members': members
     })
-
 
 def orders_view(request):
     if request.method == 'POST':
@@ -68,18 +68,6 @@ def order_now(request, order_id):
     })
 def admin_panel(request):
      return render(request, 'admin_panel.html')
-#Add_PROJECT IN INDEX
-
-def index(request):
-    contact_messages = ContactMessage.objects.all()
-    orders = Order.objects.all()
-    member = Member.objects.all()
-    images = UploadImage.objects.all()
-    return render(request, 'index.html', {
-        'contact_messages': contact_messages,
-        'orders': orders,
-        'images': images,
-        })
 
 
 def view_order(request):
@@ -169,7 +157,7 @@ def member_create(request):
         form = MemberForm(request.POST, request.FILES)
         if form.is_valid():
             member = form.save()
-            return redirect('member_detail', pk=member.pk)
+            return redirect('admin_panel')
     else:
         form = MemberForm()
     return render(request, 'member_form.html', {'form': form})
@@ -180,7 +168,7 @@ def member_update(request, pk):
         form = MemberForm(request.POST, request.FILES, instance=member)
         if form.is_valid():
             member = form.save()
-            return redirect('member_detail', pk=member.pk)
+            return redirect('admin_panel')
     else:
         form = MemberForm(instance=member)
     return render(request, 'member_form.html', {'form': form})
@@ -189,31 +177,24 @@ def member_delete(request, pk):
     member = get_object_or_404(Member, pk=pk)
     if request.method == "POST":
         member.delete()
-        return redirect('member_list')
+        return redirect('admin_panel')
     return render(request, 'member_confirm_delete.html', {'member': member})
 
 #EVENT VIEWS
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import Event
-from .forms import EventForm
 
-def event_list(request):
-    events = Event.objects.all()
-    return render(request, 'event_list.html', {'events': events})
-
-def event_detail(request, pk):
-    event = get_object_or_404(Event, pk=pk)
-    return render(request, 'event_detail.html', {'event': event})
-
-def event_create(request):
+def add_event(request):
     if request.method == 'POST':
         form = EventForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('event_list')
+            return redirect('admin_panel')  # You can define a success URL or view
     else:
         form = EventForm()
-    return render(request, 'event_form.html', {'form': form})
+    return render(request, 'event.html', {'form': form})
+
+def event_list(request):
+    event = Events.objects.all()
+    return render(request, 'event_list.html', {'event': event})
 
 def event_update(request, pk):
     event = get_object_or_404(Event, pk=pk)
@@ -232,4 +213,3 @@ def event_delete(request, pk):
         event.delete()
         return redirect('event_list')
     return render(request, 'event_confirm_delete.html', {'event': event})
-

@@ -61,7 +61,7 @@ class Member(models.Model):
     email = models.EmailField(unique=True)
     cv = models.FileField(upload_to='cvs/')
     role = models.CharField(max_length=50)
-    
+
     # New fields for social media links
     facebook_link = models.URLField(blank=True, null=True)
     instagram_link = models.URLField(blank=True, null=True)
@@ -73,16 +73,13 @@ class Member(models.Model):
 
 
 
-class Event(models.Model):
+class Events(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    location = models.CharField(max_length=255)
-    start_time = models.DateTimeField()
-    end_time = models.DateTimeField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to='event_images/', blank=True, null=True)
-    organizer = models.CharField(max_length=200)
-    
+    location = models.CharField(max_length=200)
+    start_time = models.DateField()
+    image1 = models.ImageField(upload_to='images/')
+    image2 = models.ImageField(upload_to='images/')
+
     def __str__(self):
-        return f'{self.title} {self.description}'
+        return self.title

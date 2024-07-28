@@ -283,154 +283,55 @@
 </div>
 
 <section class="bg-light wt-section" id="team" style="margin-top:20px;">
-        <div class="container">
-		<div class="row justify-content-md-center text-center mb-lg-5 mb-4 pb-lg-5">
+    <div class="container">
+        <div class="row justify-content-md-center text-center mb-lg-5 mb-4 pb-lg-5">
             <div class="col-md-12">
                 <h2 class="h1">Our Team</h2>
-                <p>Here are our Team members </p>
+                <p>Here are our Team members</p>
             </div>
         </div>
-          <div class="row">
-            <div class="col-lg-3 col-sm-6 mb-5">
-              <div class="dropdown">
-              <figure data-aos="fade-up" data-aos-easing="linear" data-aos-delay="100">
 
-
-                  <img class="w-100 rounded-top" src="{% static '/img/team/img1.jpg' %}" alt="Image Description" width="10px" height="200px">
-                  <div class="dropdown-content">
-                  <img src="{% static '/img/team/img1.jpg' %}" alt="Cinque Terre" width="300" height="200">
-                  <div class="desc">
-                    4 Years for Experience At WPG
-                  <h5>Social Media</h5>
-                    <div class="team-dp">
-                      <ul>
-                        <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
-                        <a class="text-primary" target="_blank" href="https://www.facebook.com/Maxi">
-                          <i class="fab fa-facebook"></i>
-                        </a>
-                        </li>
-                        <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Instagram">
-                        <a class="text-primary" target="_blank" href="https://www.instagram.com/Maxi">
-                          <i class="fab fa-instagram"></i>
-                        </a>
-                        </li>
-                        <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter">
-                        <a class="text-primary" target="_blank" href="https://twitter.com/Maxi">
-                          <i class="fab fa-twitter"></i>
-                        </a>
-                        </li>
-                      </ul>
-                      </div>
-                  </div>
-                  </div>
-
-                <div class="wt-box-shadow-sm bg-white text-center rounded p-4">
-                  <div class="mb-3">
-                    <h5 class="mb-1">James Rally</h5>
-                    <small class="d-block font-style-normal text-uppercase text-primary wt-letter-spacing-xs">CEO</small>
-                  </div>
-
+        <div class="row">
+            {% for member in members %}
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <figure class="data-aos fade-up" data-aos-easing="linear" data-aos-delay="200">
+                        {% if member.profile_picture %}
+                        <img class="card-img-top" src="{{ member.profile_picture.url }}" alt="Image Description" height="300" width="300">
+                        {% else %}
+                        <img class="card-img-top" src="{% static 'default-avatar.png' %}" alt="Default Image" height="300" width="300">
+                        {% endif %}
+                        <div class="card-body text-center">
+                            <h4 class="card-title">{{ member.fullname }}</h4>
+                            <strong class="d-block font-style-normal text-primary wt-letter-spacing-xs">{{ member.role }}</strong>
+                            <div class="team-dp mt-3">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Facebook">
+                                        <a class="text-primary" target="_blank" href="{{member.facebook_link}}">
+                                            <i class="fab fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Instagram">
+                                        <a class="text-primary" target="_blank" href="{{ member.instagram_link }}">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Twitter">
+                                        <a class="text-primary" target="_blank" href="{{ member.twitter_link }}">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </figure>
                 </div>
-              </figure>
             </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6 mb-5">
-              <figure data-aos="fade-up" data-aos-easing="linear" data-aos-delay="200">
-                <img class="w-100 rounded-top" src="{% static '/img/team/img2.jpg' %}" alt="Image Description">
-                <div class="wt-box-shadow-sm bg-white text-center rounded p-4">
-                  <div class="mb-3">
-                    <h5 class="mb-1">Kristen Viller</h5>
-                    <small class="d-block font-style-normal text-uppercase text-primary wt-letter-spacing-xs">Trainer</small>
-                  </div>
-				  	  <div class="team-dp">
-					<ul>
-					  <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
-						<a class="text-primary" target="_blank" href="https://www.facebook.com/Maxi">
-						  <i class="fab fa-facebook"></i>
-						</a>
-					  </li>
-					  <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Instagram">
-						<a class="text-primary" target="_blank" href="https://www.instagram.com/Maxi">
-						  <i class="fab fa-instagram"></i>
-						</a>
-					  </li>
-					  <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter">
-						<a class="text-primary" target="_blank" href="https://twitter.com/Maxi">
-						  <i class="fab fa-twitter"></i>
-						</a>
-					  </li>
-					</ul>
-				  </div>
-                </div>
-              </figure>
-            </div>
-
-            <div class="col-lg-3 col-sm-6 mb-5">
-              <figure data-aos="fade-up" data-aos-easing="linear" data-aos-delay="300">
-                <img class="w-100 rounded-top" src="{% static '/img/team/img3.jpg' %}" alt="Image Description">
-
-                <div class="wt-box-shadow-sm bg-white text-center rounded p-4">
-                  <div class="mb-3">
-                    <h5 class="mb-1">Johanna Care</h5>
-                    <small class="d-block font-style-normal text-uppercase text-primary wt-letter-spacing-xs">Trainer</small>
-                  </div>
-				  	  <div class="team-dp">
-					<ul>
-					  <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
-						<a class="text-primary" target="_blank" href="https://www.facebook.com/Maxi">
-						  <i class="fab fa-facebook"></i>
-						</a>
-					  </li>
-					  <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Instagram">
-						<a class="text-primary" target="_blank" href="https://www.instagram.com/Maxi">
-						  <i class="fab fa-instagram"></i>
-						</a>
-					  </li>
-					  <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter">
-						<a class="text-primary" target="_blank" href="https://twitter.com/Maxi">
-						  <i class="fab fa-twitter"></i>
-						</a>
-					  </li>
-					</ul>
-				  </div>
-                </div>
-              </figure>
-            </div>
-
-            <div class="col-lg-3 col-sm-6 mb-5">
-              <figure data-aos="fade-up" data-aos-easing="linear" data-aos-delay="400">
-                <img class="w-100 rounded-top" src="{% static '/img/team/img4.jpg' %}" alt="Image Description">
-                <div class="wt-box-shadow-sm bg-white text-center rounded p-4">
-                  <div class="mb-3">
-                    <h5 class="mb-1">Bruce Willamson</h5>
-                    <small class="d-block font-style-normal text-uppercase text-primary wt-letter-spacing-xs">Trainer</small>
-                  </div>
-				  	  <div class="team-dp">
-					<ul>
-					  <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
-						<a class="text-primary" target="_blank" href="https://www.facebook.com/Maxi">
-						  <i class="fab fa-facebook"></i>
-						</a>
-					  </li>
-					  <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Instagram">
-						<a class="text-primary" target="_blank" href="https://www.instagram.com/Maxi">
-						  <i class="fab fa-instagram"></i>
-						</a>
-					  </li>
-					  <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter">
-						<a class="text-primary" target="_blank" href="https://twitter.com/Maxi">
-						  <i class="fab fa-twitter"></i>
-						</a>
-					  </li>
-					</ul>
-				  </div>
-                </div>
-              </figure>
-            </div>
-          </div>
+            {% endfor %}
         </div>
-      </section>
+    </div>
+</section>
+
 
       <section class="wt-section" id="price" style="margin:20px;">
     <div class="container-fluid">
@@ -475,19 +376,19 @@
             </div>
 
             <div class="row">
-                {% for message in contact_messages %}
+                {% for contact in contacts %}
                 <div class="col-lg-6 mb-7 mb-lg-0 px-lg-5" data-aos="fade-right" data-aos-easing="linear" data-aos-delay="200">
 
-                    <blockquote class="wt-blockquote-v2 rounded mb-5">{{ message.message}}</blockquote>
+                    <blockquote class="wt-blockquote-v2 rounded mb-5">{{ contact.message}}</blockquote>
 
                     <div class="media wt-font-size-90">
-                        {% if message.photo %}
-                        <img class="d-flex rounded-circle wt-blockquote-v2__image wt-box-shadow-lg mr-3" src="{{ message.photo.url }}" alt="Image description" style="width: 50px; height: 50px;">
+                        {% if contact.photo %}
+                        <img class="d-flex rounded-circle wt-blockquote-v2__image wt-box-shadow-lg mr-3" src="{{ contact.photo.url }}" alt="Image description" style="width: 50px; height: 50px;">
                         {% else %}
                         No Photo
                         {% endif %}
                         <div class="media-body align-self-center">
-                            <strong class="d-block">{{ message.fullname }}</strong>
+                            <strong class="d-block">{{ contact.fullname }}</strong>
                         </div>
                     </div>
                     <!-- End Testimonial -->
