@@ -1,0 +1,613 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <title>WPG | Wisdom Palace Group</title>
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/mystyles.css' %}" />
+    <link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+
+    <style>
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .desc {
+        padding: 15px;
+        text-align: center;
+      }
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg  navbar-dark bg-dark fixed-top" style="">
+    <div class="container">
+        <a class="navbar-brand" href="#" style="color: white;">WPG | <span>Wisdom Palace Group</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#top">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#portfolio">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#team">Team</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#Events">Events</a>
+              </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#price">Price</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'img/furniture.jpg' %}" class="d-block w-100 h-70" alt="Banner 1">
+                <div class="carousel-caption">
+                    <h4>LightUp Your Design</h4>
+                    <p>Extra Special Touch</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'img/furniture1.png' %}" class="d-block w-100" alt="Banner 2" style="margin-top: 50px;">
+                <div class="carousel-caption">
+                    <h4>Get Your Dream Light</h4>
+                    <p>Décor with Charming</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'img/furniture3.jpeg' %}" class="d-block w-100" alt="Banner 3">
+                <div class="carousel-caption">
+                    <h4>Feel The Natural Beauty</h4>
+                    <p>Modern-edge Design</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-info" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-info" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
+
+<main role="main" class="mt-lg-4 m-0">
+
+	<section class="wt-section" id="services">
+        <div class="container" style="background-image: url('static/img/navbck.png');background-size: cover; background-repeat: no-repeat;'">
+		<div class="row justify-content-md-center text-center pb-lg-4 mb-lg-5 mb-4">
+          <div class="col-md-8 text-center w-md-50 mx-auto mb-0">
+            <h2 class="mb-md-2">Our Services</h2>
+            <p class="lead text-muted">When creative technology company providing key good products for everyone best wish.</p>
+          </div>
+		</div>
+          <div class="row">
+            <div class="col-lg-4 mb-5 mb-lg-0 text-center" data-aos="fade-up" data-aos-easing="linear" data-aos-delay="100">
+              <div class="d-block mb-4">
+                 <img src="{% static '/img/furniture3.jpeg' %}" width="180px" height="140px" class="pr-4" alt="">
+              </div>
+              <h4 class="h5">Home Furniture Design</h4>
+              <p>We design products according to your wish and choose that look attractive and make your place look decored</p>
+            </div>
+
+            <div class="col-lg-4 mb-5 mb-lg-0 text-center" data-aos="fade-up" data-aos-easing="linear" data-aos-delay="300">
+              <div class="d-block mb-4">
+                  <img src="{% static '/img/office2.jpeg' %}" width="180px" height="140px" class="pr-4" alt="">
+               </div>
+               <h4 class="h5">Office Furniture Design</h4>
+               <p>Find what you need for your business office that decors your
+                office and make it look attractive to your business customers..</p>
+             </div>
+
+            <div class="col-lg-4 mb-5 mb-lg-0 text-center" data-aos="fade-up" data-aos-easing="linear" data-aos-delay="200">
+             <div class="d-block mb-4">
+                 <img src="{% static '/img/office1.jpeg' %}" width="180px" height="140px" class="pr-4" alt="">
+              </div>
+              <h4 class="h5">Custom Furniture Design</h4>
+              <p>We design products according to your choose, best wish help to make a good design,
+                 which leads us to better quality products for our customers.</p>
+            </div>
+          </div>
+
+          <hr class="my-5">
+
+          <div class="row">
+            <div class="col-lg-4 mb-5 mb-lg-0 text-center" data-aos="fade-up" data-aos-easing="linear" data-aos-delay="400">
+             <div class="d-block mb-4">
+                 <img src="{% static '/img/services/3.svg' %}" width="85px" class="pr-4" alt="">
+              </div>
+              <h4 class="h5">Security Setup</h4>
+              <p>Easy and fast adjustments of elements are possible with WenTo UI Kit.</p>
+            </div>
+
+            <div class="col-lg-4 mb-5 mb-lg-0 text-center" data-aos="fade-up" data-aos-easing="linear" data-aos-delay="500">
+              <div class="d-block mb-4">
+                 <img src="{% static '/img/services/6.svg' %}" width="85px" class="pr-4" alt="">
+              </div>
+              <h4 class="h5">Custom Paint</h4>
+              <p>Our React Powered App will save you tons of time and cost in your projects.</p>
+            </div>
+
+            <div class="col-lg-4 mb-5 mb-lg-0 text-center" data-aos="fade-up" data-aos-easing="linear" data-aos-delay="600">
+              <div class="d-block mb-4">
+                 <img src="{% static '/img/services/2.svg' %}" width="85px" class="pr-4" alt="">
+              </div>
+              <h4 class="h5">Home Decor</h4>
+              <p>Power your app with Angular components for no cost within one stop solution.</p>
+            </div>
+          </div>
+          <!-- End Feature Blocks -->
+        </div>
+      </section>
+
+      <section class="wt-section bg-light" id="about">
+        <div class="container">
+          <div class="row justify-content-md-center text-center pb-lg-4 mb-lg-5 mb-4">
+            <div class="col-md-8 text-center w-md-50 mx-auto mb-0">
+              <h2 class="mb-md-2">About Us</h2>
+              <p class="lead text-muted">Wisdom Palace Group is a leading manufacturer of home and office furniture. We specialize in creating high-quality products that include chairs, beds, tables, office furniture, business furniture, shop fittings, and more.</p>
+            </div>
+          </div>
+          <div class="row justify-content-between align-items-center" data-aos="fade-right" data-aos-easing="linear" data-aos-delay="200">
+            <div class="col-md-5">
+              <img src="{% static '/img/about/1.jpg' %}" width="90%" class="rounded-md" alt="">
+            </div>
+            <div class="col-md-7">
+              <h3 class="mb-4">Who We Are</h3>
+              <p class="text-muted">Our wide range of products is designed to cater to the diverse needs of our customers, whether it's for residential spaces, corporate offices, or retail shops. With years of experience and a passion for design, we take pride in transforming spaces with our unique and elegant furniture.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+  <section class="wt-section container">
+        <div class="row justify-content-between align-items-center" data-aos="fade-left" data-aos-easing="linear" data-aos-delay="400">
+            <div class="col-md-7">
+                <h3 class="mb-4">Our Mission and Goals</h3>
+                <p class="text-muted">Our mission is to provide exceptional furniture solutions that blend style, comfort, and functionality. We are committed to innovation and excellence, ensuring that each piece we create meets the highest standards of craftsmanship.
+                </p>
+              </div>
+
+		  <div class="col-md-5">
+               <img src="{% static '/img/about/2.jpg' %}" width="90%" class="rounded-md" alt="">
+            </div>
+        </div>
+</section>
+
+
+<section class="wt-section" id="portfolio">
+      <div class="container">
+          <div class="row justify-content-md-center text-center pb-lg-5">
+              <div class="col-md-12">
+                  <h2 class="h1">Projects</h2>
+                  <p>The following are projects that have been completed.</p>
+              </div>
+          </div>
+          <div class="row">
+            {% for project in projects %}
+                <div class="col-sm-4 mb-4 d-flex justify-content-center align-items-center" >
+                    <div class="image-container">
+                      {% if project.image %}
+                        <img src="{{ project.image.url }}" alt="Image" class="img-fluid" width="250" height="350">
+                      {% else %}
+                        <img src="{% static 'img/default.jpg' %}" alt="No Image" class="img-fluid">
+                      {% endif %}
+                      <button type="button" class="btn btn-outline text-primary fs-6 fw-bold btn-sm" data-toggle="modal" data-target="#imageModal"
+                              data-title="{{ project.title }}"
+                              data-place="{{ project.place }}"
+                              data-start="{{ project.start }}"
+                              data-end="{{ project.end }}"
+                              data-description="{{ project.description }}"
+                              data-image-url="{{ project.image.url }}" style="margin:10px 0px 10px 80px;">
+                          View Details
+                      </button>
+                    </div>
+                </div>
+            {% endfor %}
+          </div>
+      </div>
+    </section>
+
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="imageModalLabel">Image Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+          <h5 id="modalTitle"></h5>
+            <div class="row">
+              <div class="col">
+              <h6 id="modalPlace"></h6>
+              <p> From: <span id="modalStart"></span> To: <span id="modalEnd"></span> </p>
+              </div>
+              <div class="col">
+              <img id="modalImage" src="" alt="Image" class="img-fluid">
+              </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <p id="modalDescription"></p>
+                </div>
+              </div>
+            </div>
+      </div>
+  </div>
+</div>
+
+<section class="bg-light wt-section" id="team" style="margin-top:20px;">
+    <div class="container">
+        <div class="row justify-content-md-center text-center mb-lg-5 mb-4 pb-lg-5">
+            <div class="col-md-12">
+                <h2 class="h1">Our Team</h2>
+                <p>Here are our Team members</p>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for member in members %}
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <figure class="data-aos fade-up" data-aos-easing="linear" data-aos-delay="200">
+                        {% if member.profile_picture %}
+                        <img class="card-img-top" src="{{ member.profile_picture.url }}" alt="Image Description" height="300" width="300">
+                        {% else %}
+                        <img class="card-img-top" src="{% static 'default-avatar.png' %}" alt="Default Image" height="300" width="300">
+                        {% endif %}
+                        <div class="card-body text-center">
+                            <h4 class="card-title">{{ member.fullname }}</h4>
+                            <strong class="d-block font-style-normal text-primary wt-letter-spacing-xs">{{ member.role }}</strong>
+                            <div class="team-dp mt-3">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Facebook">
+                                        <a class="text-primary" target="_blank" href="{{member.facebook_link}}">
+                                            <i class="fab fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Instagram">
+                                        <a class="text-primary" target="_blank" href="{{ member.instagram_link }}">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Twitter">
+                                        <a class="text-primary" target="_blank" href="{{ member.twitter_link }}">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </figure>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<section class="wt-section" id="Events">
+  <div class="container">
+      <div class="row justify-content-md-center text-center pb-lg-5">
+          <div class="col-md-12">
+              <h2 class="h1">Special Events</h2>
+              <p>Here we have the following events:</p>
+          </div>
+      </div>
+      {% comment %} <div class="row">
+        {% for e in event %}
+            <div class="col-sm-4 mb-4 d-flex justify-content-center align-items-center" >
+                <div class="image-container">
+                  {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="Image" class="img-fluid" width="250" height="350">
+                  {% else %}
+                    <img src="{% static 'img/default.jpg' %}" alt="No Image" class="img-fluid">
+                  {% endif %}
+                  <button type="button" class="btn btn-outline text-primary fs-6 fw-bold btn-sm" data-toggle="modal" data-target="#imageModal"
+                          data-title="{{ project.title }}"
+                          data-place="{{ project.place }}"
+                          data-start="{{ project.start }}"
+                          data-end="{{ project.end }}"
+                          data-description="{{ project.description }}"
+                          data-image-url="{{ project.image.url }}" style="margin:10px 0px 10px 80px;">
+                      View Details
+                  </button>
+                </div>
+            </div>
+        {% endfor %}
+      </div>
+  </div>
+</section> {% endcomment %}
+<!--  <li class="nav-item">
+                  <a class="nav-link" href="#Events">Events</a>
+              </li>-->
+
+      <section class="wt-section" id="price" style="margin:20px;">
+    <div class="container-fluid">
+        <div class="row justify-content-md-center text-center mb-lg-3 mb-1 pb-lg-1 m-1">
+            <div class="col-md-16 col-dark">
+              <h2 class="h1">Price</h2>
+              <p>The following are projects that can be done with their prices </p>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for order in orders %}
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                    {% if order.photo %}
+                    <img src="{{ order.photo.url }}" class="card-img-top" alt="img" style="height:200px;">
+                    {% else %}
+                    <img src="{% static 'img/default.jpg' %}" class="card-img-top" alt="default-img">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="text-h5 text-info text-center fw-bold">{{ order.caption }}</h5>
+                        <p class="text-h6 text-center fs-4">Price</p>
+                        <p class="text text-black fw-bold text-center">From RWF {{ order.price }}</p>
+                        <p class="text text-center">
+                            <a href="{% url 'order_now' order.id %}" class="btn btn-pill btn-outline-primary mt-3">Place Order</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="wt-section">
+        <div class="container">
+            <div class="row justify-content-md-center text-center pb-lg-4 mb-lg-5 mb-4">
+                <div class="col-md-8 text-center w-md-50 mx-auto mb-0">
+                    <h2 class="mb-md-2">Testimonials</h2>
+                    <p>Maxi creative technology company providing key digital services for everyone.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                {% for contact in contacts %}
+                <div class="col-lg-6 mb-7 mb-lg-0 px-lg-5" data-aos="fade-right" data-aos-easing="linear" data-aos-delay="200">
+
+                    <blockquote class="wt-blockquote-v2 rounded mb-5">{{ contact.message}}</blockquote>
+
+                    <div class="media wt-font-size-90">
+                        {% if contact.photo %}
+                        <img class="d-flex rounded-circle wt-blockquote-v2__image wt-box-shadow-lg mr-3" src="{{ contact.photo.url }}" alt="Image description" style="width: 50px; height: 50px;">
+                        {% else %}
+                        No Photo
+                        {% endif %}
+                        <div class="media-body align-self-center">
+                            <strong class="d-block">{{ contact.fullname }}</strong>
+                        </div>
+                    </div>
+                    <!-- End Testimonial -->
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+      <section class="wt-section bg-light" id="contact">
+        <div class="container">
+            <div class="row justify-content-md-center text-center pb-lg-4 mb-lg-5 mb-4">
+                <div class="col-md-8 text-center w-md-50 mx-auto mb-0 ">
+                    <h2 class="mb-md-2">Let us know</h2>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                </div>
+            </div>
+
+            <div class="row justify-content-md-center text-center mg-5 pb-5">
+                <div class="col-md-7">
+                    <div class="form">
+                        <!-- Form itself -->
+                        <form action="" method="POST" enctype="multipart/form-data" novalidate data-aos="fade-up" data-aos-easing="linear" data-aos-delay="200">
+        {% csrf_token %}
+        <div class="control-group">
+            <div class="form-group mb-4">
+                <input type="text" class="form-control form-control-sm" placeholder="Full Name" name="fullname" required data-validation-required-message="Please enter your name" />
+                <p class="help-block"></p>
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <div class="controls">
+                <input type="email" class="form-control form-control-sm" placeholder="Email" name="email" required data-validation-required-message="Please enter your email" />
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <div class="controls">
+                <input type="file" class="form-control form-control-sm" placeholder="Photo" name="photo" />
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <div class="controls">
+                <textarea rows="5" cols="100" class="form-control form-control-sm" placeholder="Message" name="message" required data-validation-required-message="Please enter your message" minlength="5" data-validation-minlength-message="Min 5 characters" maxlength="999" style="resize:none"></textarea>
+            </div>
+        </div>
+        <div id="success"></div>
+        <div class="text-center">
+            <button class="btn btn-sm btn-success py-3 mt-3 px-4 btn-pill" type="submit">Send Your Message</button>
+        </div>
+    </form>
+  </div>
+</div>
+          <div class="col-md-5">
+              <div class="row contact-info">
+                  <div class="col-md-12">
+                      <div class="bg-white p-4 d-flex mb-md-4 border rounded-md" data-aos="fade-right" data-aos-easing="linear" data-aos-delay="200">
+                          <i class="fa fa-address-book mt-md-1 text-primary pr-4"></i>
+                          <div class="text-left">
+                              <h6 class="mb-2">Address</h6>
+                              <p class="text-muted">Karongi, Rubengera, Mabanza</p>
+                          </div>
+                      </div>
+
+                      <div class="bg-white p-4 d-flex mb-md-4 border rounded-md" data-aos="fade-right" data-aos-easing="linear" data-aos-delay="300">
+                          <i class="fas fa-envelope-open mt-md-1 text-primary pr-4"></i>
+                          <div class="text-left">
+                              <h3 class="h5">Email</h3>
+                              <p class="mb-0">wisdompalacegroup24@gmail.com</p>
+                          </div>
+                      </div>
+
+                      <div class="bg-white p-4 d-flex mb-md-4 border rounded-md" data-aos="fade-right" data-aos-easing="linear" data-aos-delay="400">
+                          <i class="fa fa-phone mt-md-1 text-primary pr-4"></i>
+                          <div class="text-left">
+                              <h3 class="h5">Phone Number</h3>
+                              <p class="mb-0">0788000000</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+    </section>
+
+    <div class="row" data-aos="fade-up" data-aos-easing="linear" data-aos-delay="100">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25741.519452390987!2d29.388626!3d-2.1025452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dd2b8acc2ae437%3A0xf0a91f3814b9b4db!2sWisdom%20Palace%20Group!5e0!3m2!1sen!2srw!4v1616402178139!5m2!1sen!2srw"
+        width="100%"
+        height="320"
+        frameborder="0"
+        style="border:0"
+        allowfullscreen
+      ></iframe>
+    </div>
+    
+
+
+    </div>
+</section>
+      <!-- End Clients Section -->
+    </main>
+
+    <!-- Footer -->
+    <div class="d-flex justify-content-center">
+      <footer class="bg-dark py-3 fixed-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 text-center text-md-left mb-3 mb-md-0">
+              <strong class="text-white fw-bold">
+                &copy; Copyright 2024 by <small class="text-white">
+                  <a class="text-white" href="#">WPG| Wisdom Palace Group</a>
+                </small>
+              </strong>
+
+            </div>
+
+            <div class="col-md-4 align-self-center">
+              <ul class="list-inline text-center text-md-right mb-0">
+                <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Facebook">
+                  <a class="text-white" target="_blank" href="https://web.facebook.com/profile.php?id=61563601168498">
+                    <i class="fab fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Instagram">
+                  <a class="text-white" target="_blank" href="https://www.instagram.com/palacegroup24/">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Twitter">
+                  <a class="text-white" target="_blank" href="#">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                {% comment %} <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Dribbble">
+                  <a class="text-white" target="_blank" href="https://dribbble.com/Maxi">
+                    <i class="fab fa-dribbble"></i>
+                  </a> {% endcomment %}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- END JAVASCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+
+<script>
+  AOS.init();
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        $('#imageModal').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var title = button.data('title'); // Extract info from data-* attributes
+            var place = button.data('place');
+            var start = button.data('start');
+            var end = button.data('end');
+            var description = button.data('description');
+            var imageUrl = button.data('image-url');
+
+            var modal = $(this);
+            modal.find('.modal-title').text(title);
+            modal.find('#modalPlace').text(place);
+            modal.find('#modalStart').text(start);
+            modal.find('#modalEnd').text(end);
+            modal.find('#modalDescription').text(description);
+            modal.find('#modalImage').attr('src', imageUrl);
+        });
+    });
+</script>
+
+  </body>
+  <!-- End Body -->
+</html>
