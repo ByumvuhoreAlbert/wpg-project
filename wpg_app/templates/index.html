@@ -64,6 +64,9 @@
                     <a class="nav-link" href="#team">Team</a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" href="#Events">Events</a>
+              </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#price">Price</a>
                 </li>
                 <li class="nav-item">
@@ -331,7 +334,41 @@
         </div>
     </div>
 </section>
-
+<section class="wt-section" id="Events">
+  <div class="container">
+      <div class="row justify-content-md-center text-center pb-lg-5">
+          <div class="col-md-12">
+              <h2 class="h1">Special Events</h2>
+              <p>Here we have the following events:</p>
+          </div>
+      </div>
+      {% comment %} <div class="row">
+        {% for e in event %}
+            <div class="col-sm-4 mb-4 d-flex justify-content-center align-items-center" >
+                <div class="image-container">
+                  {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="Image" class="img-fluid" width="250" height="350">
+                  {% else %}
+                    <img src="{% static 'img/default.jpg' %}" alt="No Image" class="img-fluid">
+                  {% endif %}
+                  <button type="button" class="btn btn-outline text-primary fs-6 fw-bold btn-sm" data-toggle="modal" data-target="#imageModal"
+                          data-title="{{ project.title }}"
+                          data-place="{{ project.place }}"
+                          data-start="{{ project.start }}"
+                          data-end="{{ project.end }}"
+                          data-description="{{ project.description }}"
+                          data-image-url="{{ project.image.url }}" style="margin:10px 0px 10px 80px;">
+                      View Details
+                  </button>
+                </div>
+            </div>
+        {% endfor %}
+      </div>
+  </div>
+</section> {% endcomment %}
+<!--  <li class="nav-item">
+                  <a class="nav-link" href="#Events">Events</a>
+              </li>-->
 
       <section class="wt-section" id="price" style="margin:20px;">
     <div class="container-fluid">
@@ -456,7 +493,7 @@
                           <i class="fas fa-envelope-open mt-md-1 text-primary pr-4"></i>
                           <div class="text-left">
                               <h3 class="h5">Email</h3>
-                              <p class="mb-0">mail@webthemez.com</p>
+                              <p class="mb-0">wisdompalacegroup24@gmail.com</p>
                           </div>
                       </div>
 
@@ -464,7 +501,7 @@
                           <i class="fa fa-phone mt-md-1 text-primary pr-4"></i>
                           <div class="text-left">
                               <h3 class="h5">Phone Number</h3>
-                              <p class="mb-0">1-234-567-2401</p>
+                              <p class="mb-0">0788000000</p>
                           </div>
                       </div>
                   </div>
@@ -474,9 +511,17 @@
   </div>
     </section>
 
-		<div class="row" data-aos="fade-up" data-aos-easing="linear" data-aos-delay="100">
-  <img src="https://www.openstreetmap.org/search?query=rubengera#map=15/-2.0645/29.4133" width="100%" height="320" frameborder="0" style="border:0" allowfullscreen>
- </div>
+    <div class="row" data-aos="fade-up" data-aos-easing="linear" data-aos-delay="100">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25741.519452390987!2d29.388626!3d-2.1025452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dd2b8acc2ae437%3A0xf0a91f3814b9b4db!2sWisdom%20Palace%20Group!5e0!3m2!1sen!2srw!4v1616402178139!5m2!1sen!2srw"
+        width="100%"
+        height="320"
+        frameborder="0"
+        style="border:0"
+        allowfullscreen
+      ></iframe>
+    </div>
+    
 
 
     </div>
@@ -501,12 +546,12 @@
             <div class="col-md-4 align-self-center">
               <ul class="list-inline text-center text-md-right mb-0">
                 <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Facebook">
-                  <a class="text-white" target="_blank" href="#">
+                  <a class="text-white" target="_blank" href="https://web.facebook.com/profile.php?id=61563601168498">
                     <i class="fab fa-facebook"></i>
                   </a>
                 </li>
                 <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Instagram">
-                  <a class="text-white" target="_blank" href="#">
+                  <a class="text-white" target="_blank" href="https://www.instagram.com/palacegroup24/">
                     <i class="fab fa-instagram"></i>
                   </a>
                 </li>
