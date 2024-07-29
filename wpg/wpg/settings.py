@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 import dj_database_url
 from pathlib import Path
-
+import django_heroku
+import dj_database_url
 from django.conf import settings
 
 from django.conf.urls.static import static
@@ -34,7 +35,11 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+=======
+ALLOWED_HOSTS = ['*']
+>>>>>>> ed69509881d0e12e3a7dbb32765a70c6462cf31d
 
 
 # Application definition
@@ -148,4 +153,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+django_heroku.settings(locals())
 
