@@ -141,7 +141,7 @@ def add_project(request):
     else:
         form = ProjectForm()
 
-    return render(request, 'Addproject.html', {'form': form})
+    return render(request, 'addproject.html', {'form': form})
 
 
 def member_list(request):
