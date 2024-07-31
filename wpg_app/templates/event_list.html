@@ -1,0 +1,95 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <title>WPG | Wisdom Palace Group</title>
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- Bootstrap JS (optional for dropdown functionality) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzW9zCpeDffFVZrAo5Qx2xkuFzFg/ifX/pG5fm" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/mystyles.css' %}" />
+    <link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <style>
+        .data {
+          margin-top: 80px;
+        }
+        .sidebar {
+          position: fixed;
+          top: 56px;
+          bottom: 0;
+          left: 0;
+          z-index: 100; /* Stay on top of the .navbar */
+          padding: 48px;  /* Height of navbar */
+          overflow-x: hidden; /* Prevent horizontal scroll */
+          overflow-y: auto; /* Enable scrolling */
+          background-color: #f8f9fa; /* Light gray background */
+          border-right: 1px solid #dee2e6; /* Gray border */
+        }
+        .sidebar-sticky {
+          position: -webkit-sticky;
+          position: sticky;
+          top: 0; /* Height of navbar */
+        }
+        .sidebar .nav-link {
+          color: #333;
+        }
+        .sidebar .nav-link.active {
+          font-weight: bold;
+        }
+        .content {
+          height: 650px;
+          margin-left:230px;
+        }
+    </style>
+</head>
+<body>
+
+          <h1>Event List</h1>
+          <a  class="btn btn-primary">Add New Event</a>
+          <table class="table table-striped table-info" width="100%">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Title</th>
+                <th>description</th>
+                <th>location</th>
+                <th>start_time</th>
+                <th>Image Description</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for even in event %}
+              <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ even.title }}</td>
+              <td>{{ even.description }}</td>
+              <td>{{ even.location }}</td>
+              <td>{{ even.start_time }}</td>
+              <td> <img src="{{ even.image1.url }}" alt="" width="100" height="100">
+                <img src="{{ even.image2.url }}" alt="" width="100" height="100"> </td>
+                <td>
+                  <button type="button" name="button">Delete</button>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+
+        {% endblock %}
+
+
+
+</body>
+</html>
