@@ -75,8 +75,8 @@ def view_order(request):
     return render(request, 'view_order.html', {'ordered_products': ordered_products})
 
 def projects(request):
-    projects = Project.objects.all
-    return render(request, 'projects.html', {'projects': projects})
+    project_data = Project.objects.all
+    return render(request, 'projects.html', {'project_data': project_data})
 
 def products(request):
     orders = Order.objects.all()

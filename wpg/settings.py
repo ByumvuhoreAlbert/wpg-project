@@ -36,7 +36,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", '2dd944c0cb643f351141b1ffb749a727')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+#DEBUG = os.environ.get("DEBUG", "True").lower() == "false"
 
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(',')
 
@@ -152,14 +152,13 @@ STATICFILES_DIRS = [
 #     BASE_DIR / 'static',
 # ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Default primary key field type
