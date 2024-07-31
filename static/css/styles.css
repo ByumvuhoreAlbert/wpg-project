@@ -27,14 +27,12 @@ h1, h2{
 .text-primary{
 	color:#e68b0de8 !important
 }
-.bg-dark{
-	background-image: url('static/img/sustaina.jpg');
-}
+
 header{
   padding: 70px 0 100px;
 }
 .navbar .navbar-nav .nav-item .nav-link {
-    color: #080808;
+    color: black;
     font-size: 0.937rem;
     font-weight: 600;
     padding: 0.625rem 1.25rem;
