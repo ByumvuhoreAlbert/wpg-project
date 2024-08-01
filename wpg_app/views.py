@@ -1,9 +1,11 @@
 
+from asyncio import Event
 from email.mime import image
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
-from .models import ContactMessage, Order, OrderedProduct, Project,Member, Events
+from .models import ContactMessage, Order, OrderedProduct, Project,Member, Event
 from .forms import ContactForm, OrderForms, OrderForm, OrderedProductForm, ProjectForm, MemberForm, EventForm
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 def index(request):
     if request.method == 'POST':
@@ -23,7 +25,6 @@ def index(request):
         'form': form,
         'contacts': contacts,
         'orders': orders,
-        'projects': projects,
         'members': members
     })
 
@@ -73,11 +74,6 @@ def admin_panel(request):
 def view_order(request):
     ordered_products = OrderedProduct.objects.all()
     return render(request, 'view_order.html', {'ordered_products': ordered_products})
-
-def projects(request):
-    projects = Project.objects.all
-    return render(request, 'projects.html', {'projects': projects})
-
 def products(request):
     orders = Order.objects.all()
     return render(request, 'products.html', {'orders': orders})
@@ -86,7 +82,7 @@ def members(request):
     return render(request, 'members.html')
 
 def events(request):
-    return render(request, 'events.html')
+    return render(request, 'events/events.html')
 
 
 def delete_ordered_product(request, product_id):
@@ -179,37 +175,75 @@ def member_delete(request, pk):
         member.delete()
         return redirect('admin_panel')
     return render(request, 'member_confirm_delete.html', {'member': member})
+# List all projects
+def project_list(request):
+    projects = Project.objects.all()
+    return render(request, 'projects/project_list.html', {'projects': projects})
 
-#EVENT VIEWS
-
-def add_event(request):
+# Create a new project
+def project_create(request):
     if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('project_list')
+    else:
+        form = ProjectForm()
+    return render(request, 'projects/project_form.html', {'form': form})
+
+# Update an existing project
+def project_update(request, pk):
+    project = get_object_or_404(Project, pk=pk)
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES, instance=project)
+        if form.is_valid():
+            form.save()
+            return redirect('project_list')
+    else:
+        form = ProjectForm(instance=project)
+    return render(request, 'projects/project_form.html', {'form': form})
+
+# Delete a project
+def project_delete(request, pk):
+    project = get_object_or_404(Project, pk=pk)
+    if request.method == 'POST':
+        project.delete()
+        return redirect('project_list')
+    return render(request, 'projects/project_confirm_delete.html', {'project': project})
+
+#EVENTS CRUD
+def event_list(request):
+    events = Event.objects.all()
+    return render(request, 'events/event_list.html', {'events': events})
+
+def event_detail(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+    return render(request, 'events/event_detail.html', {'event': event})
+
+def event_new(request):
+    if request.method == "POST":
         form = EventForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('admin_panel')  # You can define a success URL or view
+            event = form.save()
+            return redirect('event_detail', pk=event.pk)
     else:
         form = EventForm()
-    return render(request, 'event.html', {'form': form})
+    return render(request, 'events/event_form.html', {'form': form})
 
-def event_list(request):
-    event = Events.objects.all()
-    return render(request, 'event_list.html', {'event': event})
-
-def event_update(request, pk):
+def event_edit(request, pk):
     event = get_object_or_404(Event, pk=pk)
-    if request.method == 'POST':
+    if request.method == "POST":
         form = EventForm(request.POST, request.FILES, instance=event)
         if form.is_valid():
-            form.save()
+            event = form.save()
             return redirect('event_detail', pk=event.pk)
     else:
         form = EventForm(instance=event)
-    return render(request, 'event_form.html', {'form': form})
+    return render(request, 'events/event_form.html', {'form': form})
 
 def event_delete(request, pk):
     event = get_object_or_404(Event, pk=pk)
-    if request.method == 'POST':
+    if request.method == "POST":
         event.delete()
         return redirect('event_list')
-    return render(request, 'event_confirm_delete.html', {'event': event})
+    return render(request, 'events/event_confirm_delete.html', {'event': event})

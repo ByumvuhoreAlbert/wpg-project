@@ -1,137 +1,155 @@
 
 {% block content %}
-<div class="container mt-4">
-    <h1>Ordered Products <a class="btn-sm btn-success float-end" href="{% url 'orders' %}">Add New Product</a></h1>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Ordered Products</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        function confirmDelete(productName) {
+            return confirm('Are you sure you want to delete  ' + productName + ' order?');
+        }
+    </script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Ordered Products 
+            <a class="btn-sm btn-success float-end" href="{% url 'orders' %}">Add New Product</a>
+        </h1>
 
-    <table width="100%">
-        <thead>
-            <tr>
-              <th>No</th>
-                <th>Order</th>
-                <th>Full Name</th>
-                <th>Telephone</th>
-                <th>Address 1</th>
-                <th>Address 2</th>
-                <th>Address 3</th>
-                <th>Address 4</th>
-                <th>Date of Completion</th>
-                <th>Products</th>
-                <th>Sells</th>
-                <th>Photo</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for product in ordered_products %}
+        <table class="table table-bordered" width="100%">
+            <thead>
                 <tr>
-                   <td>{{ forloop.counter }}</td>
-                    <td>{{ product.order }}</td>
-                    <td>{{ product.full_name }}</td>
-                    <td>{{ product.telephone }}</td>
-                    <td>{{ product.address_1 }}</td>
-                    <td>{{ product.address_2 }}</td>
-                    <td>{{ product.address_3 }}</td>
-                    <td>{{ product.address_4 }}</td>
-                    <td>{{ product.completed }}</td>
-                    <td>{{ product.products }}</td>
-                    <td>{{ product.sells }}</td>
-                    <td>
-                        {% if product.photo %}
-                            <img src="{{ product.photo.url }}" alt="{{ product.full_name }}" style="max-width: 100px; max-height: 100px;">
-                        {% else %}
-                            No Photo
-                        {% endif %}
-                    </td>
-                    <td>
-                        <!-- Action Buttons -->
-                        <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#viewModal-{{ product.id }}">View</button>
-                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal-{{ product.id }}">Edit</button>
-                        <!-- Direct Delete Button -->
-                        <form method="post" action="{% url 'delete_ordered_product' product.id %}" style="display: inline;">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                        </form>
-                    </td>
+                    <th>No</th>
+                    <th>Order</th>
+                    <th>Full Name</th>
+                    <th>Telephone</th>
+                    <th>Address 1</th>
+                    <th>Address 2</th>
+                    <th>Address 3</th>
+                    <th>Address 4</th>
+                    <th>Date of Completion</th>
+                    <th>Products</th>
+                    <th>Sells</th>
+                    <th>Photo</th>
+                    <th>Actions</th>
                 </tr>
-
-                <!-- View Modal -->
-                <div class="modal fade" id="viewModal-{{ product.id }}" tabindex="-1" aria-labelledby="viewModalLabel-{{ product.id }}" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="viewModalLabel-{{ product.id }}">View Ordered Product</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <dl class="row">
-                                    <dt class="col-sm-3">Order:</dt>
-                                    <dd class="col-sm-9">{{ product.order }}</dd>
-                                    <dt class="col-sm-3">Full Name:</dt>
-                                    <dd class="col-sm-9">{{ product.full_name }}</dd>
-                                    <dt class="col-sm-3">Telephone:</dt>
-                                    <dd class="col-sm-9">{{ product.telephone }}</dd>
-                                    <dt class="col-sm-3">Address 1:</dt>
-                                    <dd class="col-sm-9">{{ product.address_1 }}</dd>
-                                    <dt class="col-sm-3">Address 2:</dt>
-                                    <dd class="col-sm-9">{{ product.address_2 }}</dd>
-                                    <dt class="col-sm-3">Address 3:</dt>
-                                    <dd class="col-sm-9">{{ product.address_3 }}</dd>
-                                    <dt class="col-sm-3">Address 4:</dt>
-                                    <dd class="col-sm-9">{{ product.address_4 }}</dd>
-                                    <dt class="col-sm-3">Products:</dt>
-                                    <dd class="col-sm-9">{{ product.products }}</dd>
-                                    <dt class="col-sm-3">Sells:</dt>
-                                    <dd class="col-sm-9">{{ product.sells }}</dd>
-                                    <dt class="col-sm-3">Photo:</dt>
-                                    <dd class="col-sm-9">
-                                        {% if product.photo %}
-                                            <img src="{{ product.photo.url }}" alt="{{ product.full_name }}" style="max-width: 200px;">
-                                        {% else %}
-                                            No Photo
-                                        {% endif %}
-                                    </dd>
-                                </dl>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Edit Modal -->
-                <div class="modal fade" id="editModal-{{ product.id }}" tabindex="-1" aria-labelledby="editModalLabel-{{ product.id }}" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="editModalLabel-{{ product.id }}">Edit Ordered Product</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <form method="post" action="{% url 'edit_ordered_product' product.id %}" enctype="multipart/form-data">
+            </thead>
+            <tbody>
+                {% for product in ordered_products %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ product.order }}</td>
+                        <td>{{ product.full_name }}</td>
+                        <td>{{ product.telephone }}</td>
+                        <td>{{ product.address_1 }}</td>
+                        <td>{{ product.address_2 }}</td>
+                        <td>{{ product.address_3 }}</td>
+                        <td>{{ product.address_4 }}</td>
+                        <td>{{ product.completed }}</td>
+                        <td>{{ product.products }}</td>
+                        <td>{{ product.sells }}</td>
+                        <td>
+                            {% if product.photo %}
+                                <img src="{{ product.photo.url }}" alt="{{ product.full_name }}" style="max-width: 100px; max-height: 100px;">
+                            {% else %}
+                                No Photo
+                            {% endif %}
+                        </td>
+                        <td>
+                            <!-- Action Buttons -->
+                            <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#viewModal-{{ product.id }}">View</button>
+                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal-{{ product.id }}">Edit</button>
+                            <!-- Direct Delete Button -->
+                            <form method="post" action="{% url 'delete_ordered_product' product.id %}" style="display: inline;" onsubmit="return confirmDelete('{{ product.full_name }}');">
                                 {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+
+                    <!-- View Modal -->
+                    <div class="modal fade" id="viewModal-{{ product.id }}" tabindex="-1" aria-labelledby="viewModalLabel-{{ product.id }}" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="viewModalLabel-{{ product.id }}">View Ordered Product</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
                                 <div class="modal-body">
-                                    <div class="mb-3">
-                                        <label for="full_name-{{ product.id }}" class="form-label">Full Name</label>
-                                        <input type="text" class="form-control" id="full_name-{{ product.id }}" name="full_name" value="{{ product.full_name }}" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="photo-{{ product.id }}" class="form-label">Photo</label>
-                                        <input type="file" class="form-control" id="photo-{{ product.id }}" name="photo">
-                                    </div>
+                                    <dl class="row">
+                                        <dt class="col-sm-3">Order:</dt>
+                                        <dd class="col-sm-9">{{ product.order }}</dd>
+                                        <dt class="col-sm-3">Full Name:</dt>
+                                        <dd class="col-sm-9">{{ product.full_name }}</dd>
+                                        <dt class="col-sm-3">Telephone:</dt>
+                                        <dd class="col-sm-9">{{ product.telephone }}</dd>
+                                        <dt class="col-sm-3">Address 1:</dt>
+                                        <dd class="col-sm-9">{{ product.address_1 }}</dd>
+                                        <dt class="col-sm-3">Address 2:</dt>
+                                        <dd class="col-sm-9">{{ product.address_2 }}</dd>
+                                        <dt class="col-sm-3">Address 3:</dt>
+                                        <dd class="col-sm-9">{{ product.address_3 }}</dd>
+                                        <dt class="col-sm-3">Address 4:</dt>
+                                        <dd class="col-sm-9">{{ product.address_4 }}</dd>
+                                        <dt class="col-sm-3">Products:</dt>
+                                        <dd class="col-sm-9">{{ product.products }}</dd>
+                                        <dt class="col-sm-3">Sells:</dt>
+                                        <dd class="col-sm-9">{{ product.sells }}</dd>
+                                        <dt class="col-sm-3">Photo:</dt>
+                                        <dd class="col-sm-9">
+                                            {% if product.photo %}
+                                                <img src="{{ product.photo.url }}" alt="{{ product.full_name }}" style="max-width: 200px;">
+                                            {% else %}
+                                                No Photo
+                                            {% endif %}
+                                        </dd>
+                                    </dl>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                    <!-- Edit Modal -->
+                    <div class="modal fade" id="editModal-{{ product.id }}" tabindex="-1" aria-labelledby="editModalLabel-{{ product.id }}" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editModalLabel-{{ product.id }}">Edit Ordered Product</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form method="post" action="{% url 'edit_ordered_product' product.id %}" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label for="full_name-{{ product.id }}" class="form-label">Full Name</label>
+                                            <input type="text" class="form-control" id="full_name-{{ product.id }}" name="full_name" value="{{ product.full_name }}" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="photo-{{ product.id }}" class="form-label">Photo</label>
+                                            <input type="file" class="form-control" id="photo-{{ product.id }}" name="photo">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
+</html>
+
 {% endblock %}

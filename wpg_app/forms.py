@@ -1,5 +1,5 @@
 from django import forms
-from .models import ContactMessage, Order, OrderedProduct, Project, Member, Events
+from .models import ContactMessage, Order, OrderedProduct, Project, Member, Event
 
 class ContactForm(forms.ModelForm):
     class Meta:
@@ -48,5 +48,9 @@ class MemberForm(forms.ModelForm):
 
 class EventForm(forms.ModelForm):
     class Meta:
-        model = Events
+        model = Event
         fields = ['title', 'description', 'location', 'start_time', 'image1', 'image2']
+        widgets = {
+            'start_time': forms.DateInput(attrs={'type': 'date'}),
+            'description': forms.Textarea(attrs={'rows': 4}),
+        }
