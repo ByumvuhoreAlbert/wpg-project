@@ -67,13 +67,9 @@ class Member(models.Model):
     instagram_link = models.URLField(blank=True, null=True)
     twitter_link = models.URLField(blank=True, null=True)
 
-
     def __str__(self):
         return self.fullname
-
-
-
-class Events(models.Model):
+class Event(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     location = models.CharField(max_length=200)

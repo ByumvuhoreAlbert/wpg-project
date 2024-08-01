@@ -2,7 +2,8 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from .views import index, order_now, admin_panel, view_order, projects, products, members, add_project, delete_ordered_product, edit_ordered_product, orders_view, delete_order, edit_order, member_list,member_detail,member_create,member_update,member_delete, add_event, event_list, event_update,event_delete, login_view, logout_view
+
+from .views import event_delete, event_detail, event_update, projects,add_event, event_edit, event_list, event_new, index, order_now, admin_panel, project_create, project_delete, project_list, project_update, view_order, products, members, add_project, delete_ordered_product, edit_ordered_product, orders_view, delete_order, edit_order, member_list,member_detail,member_create,member_update,member_delete,login_view, logout_view
 
 urlpatterns = [
     path('', index, name='index'),
@@ -17,7 +18,11 @@ urlpatterns = [
     path('add_event/', add_event, name='add_event'),
     path('event_list/', event_list, name='event_list'),
     path('add_project/', add_project, name='add_project'),
-
+    
+    # path('projects/', projects, name='projects'),
+    path('products/', products, name='products'),
+    path('members/', members, name='members'),
+    path('add_project/', add_project, name='add_project'),
 
     path('delete_ordered_product/<int:product_id>/', delete_ordered_product, name='delete_ordered_product'),
     path('edit_ordered_product/<int:product_id>/', edit_ordered_product, name='edit_ordered_product'),
@@ -32,13 +37,26 @@ urlpatterns = [
     path('member/<int:pk>/delete/', member_delete, name='member_delete'),
 
 
+
     path('events/<int:pk>/edit/', event_update, name='event_update'),
     path('events/<int:pk>/delete/', event_delete, name='event_delete'),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+    #projects
+    path('project_list', project_list, name='project_list'),
+    path('create/', project_create, name='project_create'),
+    path('<int:pk>/update/', project_update, name='project_update'),
+    path('<int:pk>/delete/', project_delete, name='project_delete'),
+    #EVENTS CRUD
+    path('event_list', event_list, name='event_list'),
+    path('<int:pk>/',event_detail, name='event_detail'),
+    path('new/', event_new, name='event_new'),
+    path('<int:pk>/edit/', event_edit, name='event_edit'),
+    path('<int:pk>/delete/', event_delete, name='event_delete'),
+   
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

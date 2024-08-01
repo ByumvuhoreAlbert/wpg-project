@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from .models import ContactMessage, Order, OrderedProduct, Project, Events, Member
+from .models import ContactMessage, Order, OrderedProduct, Project, Event, Member
 
 
 #admin.site.register(Record)
@@ -14,4 +14,4 @@ admin.site.register(Project)
 
 admin.site.register(Member)
 
-admin.site.register(Events)
+admin.site.register(Event)

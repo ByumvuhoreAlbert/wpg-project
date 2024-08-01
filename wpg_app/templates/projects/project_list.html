@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2em auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1em 0;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 0.75em;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            padding: 0.5em;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+        .actions {
+            display: flex;
+            gap: 1em;
+        }
+        .actions a {
+            color: #007bff;
+            font-size: 1.2em; /* Increase icon size */
+            transition: color 0.3s;
+        }
+        .actions a:hover {
+            color: #0056b3;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            padding: 0.5em 1em;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            position: relative;
+            border-radius: 4px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-buttons {
+            text-align: right;
+        }
+        .modal-buttons button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .modal-buttons .cancel-btn {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Projects</h1>
+    </header>
+    <div class="container">
+        <a href="{% url 'project_create' %}" class="btn-primary">Add New Project</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Place</th>
+                    <th>Status</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in projects %}
+                <tr>
+                    <td>{{ project.title }}</td>
+                    <td>{{ project.place }}</td>
+                    <td>{{ project.status }}</td>
+                    <td>{{ project.start }}</td>
+                    <td>{{ project.end }}</td>
+                    <td>{{ project.description }}</td>
+                    <td>
+                        {% if project.image %}
+                        <img src="{{ project.image.url }}" alt="Project Image">
+                        {% endif %}
+                    </td>
+                    <td class="actions">
+                        <a href="{% url 'project_update' project.pk %}" title="Edit"><i class="fas fa-edit"></i></a>
+                        <a href="#" onclick="openModal('{{ project.title }}', '{% url 'project_delete' project.pk %}')" title="Delete"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'admin_panel' %}" title="Home"><i class="fas fa-home"></i></a>
+    </div>
+
+    <!-- Modal -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="modalMessage"></p>
+            <div class="modal-buttons">
+                <button id="confirmButton">Yes, Delete</button>
+                <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(projectTitle, deleteUrl) {
+            document.getElementById('modalMessage').textContent = `Are you sure you want to delete the project: ${projectTitle}?`;
+            document.getElementById('confirmButton').onclick = function() {
+                window.location.href = deleteUrl;
+            };
+            document.getElementById('confirmModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+        }
+
+        // Close the modal if the user clicks anywhere outside of it
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('confirmModal')) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -74,32 +74,33 @@
   </nav>
 
 <div class="container-fluid" style="margin-top:80px;">
-        <nav id="sidebar" class="sidebar d-md-block bg-light">
-            <div class="position-sticky sidebar-sticky">
-                <ul class="nav flex-column">
-                    <li class="nav-item" style="padding:20px;">
-                      <i class="fas fa-user-shield" style="font-size: 35px;"></i><br>ADMIN PANEL
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#" data-url="{% url 'products' %}" style="font-family: Impact; font-size: 18px;">
-                          Products
-                      </a>
-                      <a class="nav-link" href="#" data-url="{% url 'view_order' %}" style="font-family: Impact; font-size: 18px;">
-                          Orders
-                      </a>
-                        <a class="nav-link" href="#" data-url="{% url 'projects' %}" style="font-family: Impact; font-size: 18px;">
-                            Projects
-                          </a>
-                        <a class="nav-link" href="#" data-url="{% url 'member_list' %}" style="font-family: Impact; font-size: 18px;">
-                            Members
-                        </a>
-                        <a class="nav-link" href="#" data-url="{% url 'event_list' %}" style="font-family: Impact; font-size: 18px;">
-                          Events
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+
+  <nav id="sidebar" class="sidebar d-md-block bg-light">
+<div class="position-sticky sidebar-sticky">
+  <ul class="nav flex-column">
+      <li class="nav-item" style="padding:20px;">
+          <i class="fas fa-user-shield" style="font-size: 35px;"></i><br>ADMIN PANEL
+      </li>
+      <li class="nav-item">
+          <a id="default-link" class="nav-link active" href="#" data-url="{% url 'products' %}" style="font-family: Impact; font-size: 18px;">
+              Products
+          </a>
+          <a class="nav-link" href="#" data-url="{% url 'view_order' %}" style="font-family: Impact; font-size: 18px;">
+              Orders
+          </a>
+          <a class="nav-link" href="#" data-url="{% url 'projects' %}" style="font-family: Impact; font-size: 18px;">
+              Projects
+          </a>
+          <a class="nav-link" href="#" data-url="{% url 'member_list' %}" style="font-family: Impact; font-size: 18px;">
+              Members
+          </a>
+          <a class="nav-link" href="#" data-url="{% url 'event_list' %}" style="font-family: Impact; font-size: 18px;">
+              Events
+          </a>
+      </li>
+  </ul>
+</div>
+</nav>
 
         <div class="card content">
           <div class="card-header d-flex justify-content-between align-items-center">
@@ -110,6 +111,7 @@
             <!-- Default content will be loaded here -->
           </div>
         </div>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -138,20 +140,8 @@
             }
         });
 
-        // Load default content
-        var defaultUrl = $('.sidebar .nav-link.active').data('url');
-        if (defaultUrl) {
-            $.ajax({
-                url: defaultUrl,
-                type: 'GET',
-                success: function(data) {
-                    $('#content').html(data);
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error loading default content:', error);
-                }
-            });
-        }
+        // Trigger a click event on the "Products" link to load default content
+        $('#default-link').click();
     });
 </script>
 </body>

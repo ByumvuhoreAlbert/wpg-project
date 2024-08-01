@@ -1,0 +1,13 @@
+
+{% block content %}
+<html>
+<div class="container mt-4">
+    <h2>Are you sure you want to delete "{{ event.title }}"?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'event_detail' event.pk %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+<html>
+{% endblock %}

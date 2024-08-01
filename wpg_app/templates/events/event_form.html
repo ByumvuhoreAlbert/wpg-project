@@ -1,0 +1,63 @@
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Create/Edit Event</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            {{ form.title.label_tag }}
+            {{ form.title }}
+        </div>
+        
+        <div class="form-group">
+            {{ form.description.label_tag }}
+            {{ form.description }}
+        </div>
+        
+        <div class="form-group">
+            {{ form.location.label_tag }}
+            {{ form.location }}
+        </div>
+        
+        <div class="form-group">
+            {{ form.start_time.label_tag }}
+            {{ form.start_time }}
+        </div>
+        
+        <div class="form-group">
+            {{ form.image1.label_tag }}
+            {{ form.image1 }}
+        </div>
+        
+        <div class="form-group">
+            {{ form.image2.label_tag }}
+            {{ form.image2 }}
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Save Event</button>
+        <a href="{% url 'event_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+<style>
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input, textarea, select {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+    }
+
+    .btn {
+        margin-top: 15px;
+    }
+</style>
+{% endblock %}
