@@ -2,7 +2,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from .views import index, order_now, admin_panel, view_order, projects, products, members, add_project, delete_ordered_product, edit_ordered_product, orders_view, delete_order, edit_order, member_list,member_detail,member_create,member_update,member_delete, add_event, event_list, event_update,event_delete
+from .views import index, order_now, admin_panel, view_order, projects, products, members, add_project, delete_ordered_product, edit_ordered_product, orders_view, delete_order, edit_order, member_list,member_detail,member_create,member_update,member_delete, add_event, event_list, event_update,event_delete, login_view, logout_view
 
 urlpatterns = [
     path('', index, name='index'),
@@ -34,7 +34,9 @@ urlpatterns = [
 
     path('events/<int:pk>/edit/', event_update, name='event_update'),
     path('events/<int:pk>/delete/', event_delete, name='event_delete'),
-    
+    path('login/', login_view, name='login'),
+    path('logout/', logout_view, name='logout'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

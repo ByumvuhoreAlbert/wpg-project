@@ -130,7 +130,7 @@ header{
     padding: 25px 0;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 500px) {
 .carousel-caption h2 {
     font-size: 19px;
     color: #f1ad50;
@@ -139,4 +139,41 @@ header{
     font-size: 14px;
 	font-weight:bold;
 }
+}
+
+@media (max-width: 500px) {
+  .hero {
+    height: 40vh; /* Adjust height for smaller devices if needed */
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    height: 30vh; /* Further adjust for extra small devices if needed */
+  }
+}
+
+/* Responsive design for project items */
+@media (max-width: 500px) {
+  .image-container img {
+    max-height: 200px; /* Adjust max height for medium devices */
+  }
+}
+
+@media (max-width: 576px) {
+  .image-container img {
+    max-height: 150px; /* Further adjust for smaller devices */
+  }
+}
+
+/* Make the button responsive and centered */
+.btn {
+  margin: 10px 0;
+}
+
+/* Ensure the column items are centered */
+.col-sm-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

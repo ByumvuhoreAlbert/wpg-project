@@ -1,9 +1,12 @@
 
 from email.mime import image
 from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
 from .models import ContactMessage, Order, OrderedProduct, Project,Member, Events
 from .forms import ContactForm, OrderForms, OrderForm, OrderedProductForm, ProjectForm, MemberForm, EventForm
+from django.contrib.auth.models import User
+from django.contrib.auth import logout as auth_logout
 
 def index(request):
     if request.method == 'POST':
@@ -66,9 +69,6 @@ def order_now(request, order_id):
         'order_form': order_form,
         'ordered_product_form': ordered_product_form
     })
-def admin_panel(request):
-     return render(request, 'admin_panel.html')
-
 
 def view_order(request):
     ordered_products = OrderedProduct.objects.all()
@@ -213,3 +213,33 @@ def event_delete(request, pk):
         event.delete()
         return redirect('event_list')
     return render(request, 'event_confirm_delete.html', {'event': event})
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('uname')
+        password = request.POST.get('pass')
+
+        if username == 'Real' and password == 'Lotus@2024':
+            user, created = User.objects.get_or_create(username=username)
+            if created:
+                user.set_password(password)
+                user.save()
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                auth_login(request, user)
+                return redirect('admin_panel')
+            else:
+                messages.error(request, 'Invalid username or password.')
+        else:
+            messages.error(request, 'Invalid username or password.')
+    return render(request, 'login.html')
+
+def admin_panel(request):
+     if not request.user.is_authenticated:
+        return redirect('login')  # Redirect to login if not authenticated
+     return render(request, 'admin_panel.html')
+
+def logout_view(request):
+    auth_logout(request)
+    return redirect('login')

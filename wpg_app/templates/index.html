@@ -548,8 +548,11 @@
       <footer class="bg-dark py-3 fixed-bottom">
         <div class="container">
           <div class="row">
-            <div class="col-md-8 text-center text-md-left mb-3 mb-md-0">
-              <strong class="text-white fw-bold">
+            <div class="col-md-8 text-md-left mb-3 mb-md-0">
+              <li class="list-inline-item mx-2">
+                <a class="nav-link text-dark" href="{% url 'login' %}">Login</a>
+              </li>
+              <strong class="text-white fw-bold" style="margin-left:200px;">
                 &copy; Copyright 2024 by <small class="text-white">
                   <a class="text-white" href="#">WPG| Wisdom Palace Group</a>
                 </small>
@@ -574,6 +577,7 @@
                     <i class="fab fa-twitter"></i>
                   </a>
                 </li>
+
                 {% comment %} <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Dribbble">
                   <a class="text-white" target="_blank" href="https://dribbble.com/Maxi">
                     <i class="fab fa-dribbble"></i>
