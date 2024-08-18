@@ -28,7 +28,7 @@ body {
     font-weight: bold;
 }
 .navbar-nav .nav-link {
-    color: black !important;
+    color: white !important;
     font-size: 1rem;
     font-weight: bold;
 }
@@ -38,7 +38,7 @@ body {
     padding: 8px 20px;
 }
 .navbar .navbar-nav .nav-item .nav-link {
-    color: black;
+    color: white;
     font-size: 0.937rem;
     font-weight: 600;
     padding: 0.625rem 1.25rem;
@@ -47,7 +47,7 @@ body {
     letter-spacing: 1px;
 }
 .navbar-dark .navbar-toggler {
-    color: #3c3c3c;
+    /* color: #3c3c3c; */
     border-color: #f1ad50;
 }
 .navbar-collapse {
