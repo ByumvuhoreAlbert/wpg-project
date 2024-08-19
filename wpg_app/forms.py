@@ -6,7 +6,7 @@ from .models import ContactMessage, Order, OrderedProduct, Project, Member, Even
 class ContactForm(forms.ModelForm):
     class Meta:
         model = ContactMessage
-        fields = ['fullname', 'email', 'photo', 'message']
+        fields = ['fullname', 'email', 'telephone', 'message']
 
 class OrderForms(forms.ModelForm):
     class Meta:

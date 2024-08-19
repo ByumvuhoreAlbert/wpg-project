@@ -346,7 +346,7 @@
                         <img class="card-img-top" src="{% static 'default-avatar.png' %}" alt="Default Image" height="300" width="300">
                         {% endif %}
                         <div class="card-body text-center">
-                            <h4 class="card-title">{{ member.fullname }}</h4>
+                            <h4 class="card-title text-white">{{ member.fullname }}</h4>
                             <strong class="d-block font-style-normal text-primary wt-letter-spacing-xs">{{ member.role }}</strong>
                             <div class="team-dp mt-3">
                                 <ul class="list-inline">
@@ -417,7 +417,7 @@
                         {% endif %}
                         <div class="card-body">
                             <h5 class="text-h5 text-info text-center fw-bold">{{ order.caption }}</h5>
-                            <p class="text-h6 text-center fs-4">Price</p>
+                            <p class="text-h6 text-center fs-4 text-success">Price</p>
                             <p class="text text-black fw-bold text-center">From RWF {{ order.price }}</p>
                             <p class="text text-center">
                                 <a href="{% url 'order_now' order.id %}" class="btn btn-pill btn-outline-primary mt-3">Place Order</a>
@@ -497,7 +497,7 @@
         </div>
         <div class="form-group mb-4">
             <div class="controls">
-                <input type="file" class="form-control form-control-sm" placeholder="Photo" name="photo" />
+                <input type="text" class="form-control form-control-sm" placeholder="Telephone" name="telephone" />
             </div>
         </div>
         <div class="form-group mb-4">
@@ -518,24 +518,26 @@
                       <div class="bg-white p-4 d-flex mb-md-4 border rounded-md" data-aos="fade-right" data-aos-easing="linear" data-aos-delay="200">
                           <i class="fa fa-address-book mt-md-1 text-primary pr-4"></i>
                           <div class="text-left">
-                              <h6 class="mb-2">Address</h6>
-                              <p class="text-muted">Karongi, Rubengera, Mabanza</p>
+                              <h4 class="h4">Address</h4>
+                              <p class="text-muted">Western Province, Karongi District, Rubengera Sector, AJEMAC House</p>
                           </div>
                       </div>
 
                       <div class="bg-white p-4 d-flex mb-md-4 border rounded-md" data-aos="fade-right" data-aos-easing="linear" data-aos-delay="300">
                           <i class="fas fa-envelope-open mt-md-1 text-primary pr-4"></i>
                           <div class="text-left">
-                              <h3 class="h5">Email</h3>
+                              <h4 class="h4">Email</h4>
                               <p class="mb-0">wisdompalacegroup24@gmail.com</p>
                           </div>
                       </div>
 
                       <div class="bg-white p-4 d-flex mb-md-4 border rounded-md" data-aos="fade-right" data-aos-easing="linear" data-aos-delay="400">
-                          <i class="fa fa-phone mt-md-1 text-primary pr-4"></i>
+                          <i class="fas fa-phone mt-md-1 text-primary pr-4"></i>
                           <div class="text-left">
-                              <h3 class="h5">Phone Number</h3>
-                              <p class="mb-0">0788000000</p>
+                              <h4 class="h4"> Phone Number</h4>
+                              {% for member in members %}
+                              <p class="mb-0">{{ member.telephone }}</p>
+                              {% endfor %}
                           </div>
                       </div>
                   </div>

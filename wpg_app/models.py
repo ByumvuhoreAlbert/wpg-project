@@ -3,8 +3,8 @@ from django.db import models
 class ContactMessage(models.Model):
     fullname = models.CharField(max_length=255)
     email = models.EmailField()
-    photo = models.ImageField(upload_to='photos/', blank=True, null=True)
-    message = models.TextField()
+    telephone = models.CharField(max_length=255, default="0784481603")
+    message = models.CharField(max_length=255)
 
     def __str__(self):
         return self.fullname
