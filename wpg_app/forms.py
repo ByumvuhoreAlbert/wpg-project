@@ -45,7 +45,7 @@ class ProjectForm(forms.ModelForm):
 class MemberForm(forms.ModelForm):
     class Meta:
         model = Member
-        fields = ['profile_picture', 'fullname', 'telephone', 'email', 'cv', 'role', 'facebook_link', 'instagram_link', 'twitter_link']
+        fields = ['profile_picture', 'fullname', 'telephone', 'email', 'role']
 
 
 class EventForm(forms.ModelForm):
@@ -57,4 +57,3 @@ class EventForm(forms.ModelForm):
             'start_time': forms.DateInput(attrs={'type': 'date'}),
             'description': forms.Textarea(attrs={'rows': 4}),
         }
-

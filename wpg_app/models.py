@@ -59,13 +59,13 @@ class Member(models.Model):
     fullname = models.CharField(max_length=255)
     telephone = models.CharField(max_length=15)
     email = models.EmailField(unique=True)
-    cv = models.FileField(upload_to='cvs/')
+    #cv = models.FileField(upload_to='cvs/')
     role = models.CharField(max_length=50)
 
     # New fields for social media links
-    facebook_link = models.URLField(blank=True, null=True)
-    instagram_link = models.URLField(blank=True, null=True)
-    twitter_link = models.URLField(blank=True, null=True)
+    #facebook_link = models.URLField(blank=True, null=True)
+    #instagram_link = models.URLField(blank=True, null=True)
+    #twitter_link = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.fullname
