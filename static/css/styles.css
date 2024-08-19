@@ -91,7 +91,7 @@ body {
 }
 .carousel-caption p {
     font-size: 18px;
-    color: white !important;
+    color: white;
     font-style: italic;
     font-family: Arial, Helvetica, sans-serif;
 }
